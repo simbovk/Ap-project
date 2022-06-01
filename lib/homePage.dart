@@ -2,8 +2,24 @@
 
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  List<Container> digitalProducts = [
+    // ignore: avoid_unnecessary_containers
+    Container(
+      child: Column(
+        children: const [
+          Image(image: AssetImage("assets/images/iphone13.png")),
+          Image(image: AssetImage("assets/images/laptopLegion5.png")),
+          Image(image: AssetImage("assets/images/iphone13.png")),
+        ],
+      ),
+    ),
+    Container(),
+    Container(),
+  ];
+  HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,24 +47,24 @@ class HomePage extends StatelessWidget {
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/homepage.png"),
-                  fit: BoxFit.cover)),
+          // decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //         image: AssetImage("assets/images/homepage.png"),
+          //         fit: BoxFit.cover)),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                    const Text(
-                      'Digital Products',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
+                  const Text(
+                    'Digital Products',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
                     ),
-                    const Spacer(),
+                  ),
+                  const Spacer(),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: TextButton(
@@ -56,7 +72,7 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomePage(),
+                              builder: (context) => HomePage(),
                             ),
                           );
                         },
@@ -67,7 +83,86 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              // Row(
+              Expanded(
+                child: ListView(
+                  // This next line does the trick.
+                  scrollDirection: Axis.horizontal,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/iphone13.png"),
+                                        fit: BoxFit.fill),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8.0)),
+                                    color: Colors.black),
+                                height: 120,
+                                width: 120,
+                              ),
+                            ),
+                              const Text('iphone 13\n+1000' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),)
+                          ],
+                        ),
+                         Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 48),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/laptopLegion5.png"),
+                                        fit: BoxFit.fill),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8.0)),
+                                    color: Colors.black),
+                               height: 120,
+                                width: 120,
+                              ),
+                            ),
+                             const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child:  Text('legion 5\n+500' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),),
+                              )
+                          ],
+                        ),
+                         Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 48),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/ipad.png"),
+                                        fit: BoxFit.fill),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8.0)),
+                                    color: Colors.black),
+                               height: 120,
+                                width: 120,
+                              ),
+                            ),
+                             const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child:  Text('ipad pro\n+2000' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),),
+                              )
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              //Row(
               //   mainAxisAlignment: MainAxisAlignment.spaceAround,
               //   children: [
               //     ListView.builder(

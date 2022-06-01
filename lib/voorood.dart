@@ -20,7 +20,7 @@ class Vorod extends StatelessWidget {
                 const SizedBox(height: 50),
                 const TextField(
                    decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     hintText: 'Phonenumber',
                     iconColor: Color.fromARGB(255, 78, 255, 223))
                 ),
@@ -28,7 +28,7 @@ class Vorod extends StatelessWidget {
                 const TextField(
                   obscureText: true,
                    decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     hintText: 'Password',
                     iconColor: Color.fromARGB(255, 78, 175, 255))
                 ),
@@ -40,7 +40,7 @@ class Vorod extends StatelessWidget {
                    Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const HomePage(),
+                      builder: (context) =>  HomePage(),
                     ),
                   );
                 },

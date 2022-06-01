@@ -38,44 +38,54 @@ class SignUp extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
               const SizedBox(
-                height: 50,
+                height: 20,
               ),
-              const TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Firstname',
-                    iconColor: Color.fromARGB(255, 78, 175, 255)),
+               const Padding(
+                padding: EdgeInsets.all(20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                      hintText: 'Firstname',
+                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                ),
               ),
-              const SizedBox(height: 40),
-              const TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Lastname',
-                    iconColor: Color.fromARGB(255, 78, 175, 255)),
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                      hintText: 'Lastname',
+                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                ),
               ),
-              const SizedBox(height: 40),
-              const TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Password',
-                    iconColor: Color.fromARGB(255, 78, 175, 255)),
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                      hintText: 'Password',
+                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                ),
               ),
-              const SizedBox(height: 40),
-              const TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Phonenumber',
-                    iconColor: Color.fromARGB(255, 78, 175, 255)),
+             const Padding(
+                padding: EdgeInsets.all(20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                      hintText: 'Phonenumber',
+                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                ),
               ),
-              const SizedBox(height: 40),
-              const TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'email',
-                    iconColor: Color.fromARGB(255, 78, 175, 255)),
+              const Padding(
+                padding: EdgeInsets.all(20),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                      hintText: 'email',
+                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                ),
               ),
-              const SizedBox(height: 40),
               SizedBox(
                 height: 30,
                 width: 100,
@@ -83,7 +93,7 @@ class SignUp extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const HomePage(),
+                      builder: (context) => HomePage(),
                     ),
                   );
               }, child: const Text('Sign in'),style: ButtonStyle(
@@ -95,9 +105,6 @@ class SignUp extends StatelessWidget {
                  )
                 ),
                ),
-              ),
-              const SizedBox(
-                height: 30,
               ),
               TextButton(
                 child: const Text('already have an account?'),
