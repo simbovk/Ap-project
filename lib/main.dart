@@ -1,5 +1,5 @@
-// ignore_for_file: prefer_const_constructors
 
+import 'package:digikala/homePage.dart';
 import 'package:digikala/voorood.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SignUp(),
     );
@@ -23,85 +23,89 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0.0,
-      //   shadowColor: Color.fromARGB(255, 19, 234, 249),
-      //   centerTitle: true,
-      //   title: const Text(
-      //     "Create Account",
-      //     style: TextStyle(
-      //       color: Color.fromARGB(255, 19, 234, 249),
-      //       fontWeight: FontWeight.w500,
-      //       fontFamily: "Roboto",
-      //       fontStyle:  FontStyle.normal,
-      //       fontSize: 19.0
-      //       ),
-      //   ),
-      // ),
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/login.PNG"),
+                  image: AssetImage("assets/images/login.png"),
                   fit: BoxFit.cover)),
-          padding: EdgeInsets.only(right: 30, left: 30),
+          padding: const EdgeInsets.only(right: 30, left: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Create Account',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
-              TextField(
+              const TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Firstname',
                     iconColor: Color.fromARGB(255, 78, 175, 255)),
               ),
-              SizedBox(height: 40),
-              TextField(
+              const SizedBox(height: 40),
+              const TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Lastname',
                     iconColor: Color.fromARGB(255, 78, 175, 255)),
               ),
-              SizedBox(height: 40),
-              TextField(
+              const SizedBox(height: 40),
+              const TextField(
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Password',
                     iconColor: Color.fromARGB(255, 78, 175, 255)),
               ),
-              SizedBox(height: 40),
-              TextField(
+              const SizedBox(height: 40),
+              const TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Phonenumber',
                     iconColor: Color.fromARGB(255, 78, 175, 255)),
               ),
-              SizedBox(height: 40),
-              TextField(
+              const SizedBox(height: 40),
+              const TextField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'email',
                     iconColor: Color.fromARGB(255, 78, 175, 255)),
               ),
-              SizedBox(height: 40),
-              ElevatedButton(onPressed: () {}, child: Text('Sign in')),
+              const SizedBox(height: 40),
               SizedBox(
+                height: 30,
+                width: 100,
+              child: ElevatedButton(onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
+                  );
+              }, child: const Text('Sign in'),style: ButtonStyle(
+                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                       RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                      side: const BorderSide(color: Color.fromARGB(255, 54, 200, 244))
+                    )
+                 )
+                ),
+               ),
+              ),
+              const SizedBox(
                 height: 30,
               ),
               TextButton(
-                child: Text('already have an account?'),
+                child: const Text('already have an account?'),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Vorod(),
+                      builder: (context) => const Vorod(),
                     ),
                   );
                 },
