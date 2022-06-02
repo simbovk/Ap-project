@@ -48,45 +48,58 @@ class Phone extends StatelessWidget {
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/images/iphone13.png"),
-                                fit: BoxFit.fill),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8.0)),
-                          ),
-                          height: 250,
-                          width: 150,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Phone(),
                         ),
-                      ),
-                      Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(right: 10 , left: 10 , bottom: 35),
-                            child: Text(
-                              'Apple iPhone 13 Pro (128GB, Sierra\n Blue) [Locked] + Carrier Subscription...',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage("assets/images/iphone13.png"),
+                                  fit: BoxFit.fill),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8.0)),
                             ),
+                            height: 250,
+                            width: 150,
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(bottom: 100 , right: 190),
-                            child: Text(
-                              r'Price: &999.00',
-                              style: TextStyle(fontStyle: FontStyle.italic),textAlign: TextAlign.left,
+                        ),
+                        Column(
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  right: 10, left: 10, bottom: 35),
+                              child: Text(
+                                'Apple iPhone 13 Pro (128GB, Sierra\n Blue) [Locked] + Carrier Subscription...',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          )
-                        ],
-                      )
-                    ],
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 100, right: 190),
+                              child: Text(
+                                r'Price: &999.00',
+                                style: TextStyle(fontStyle: FontStyle.italic),
+                                textAlign: TextAlign.left,
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
