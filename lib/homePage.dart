@@ -1,3 +1,4 @@
+import 'package:digikala/PhoneCat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -84,6 +85,16 @@ class HomePage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 8),
                                 child: Container(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => const Phone(),
+                                        ),
+                                      );
+                                    },
+                                  ),
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
@@ -606,9 +617,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black)
-          ),
+          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
           child: BottomNavigationBar(
             fixedColor: Colors.black,
             unselectedItemColor: Colors.black,
