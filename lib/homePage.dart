@@ -1,23 +1,8 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  List<Container> digitalProducts = [
-    // ignore: avoid_unnecessary_containers
-    Container(
-      child: Column(
-        children: const [
-          Image(image: AssetImage("assets/images/iphone13.png")),
-          Image(image: AssetImage("assets/images/laptopLegion5.png")),
-          Image(image: AssetImage("assets/images/iphone13.png")),
-        ],
-      ),
-    ),
-    Container(),
-    Container(),
-  ];
   HomePage({Key? key}) : super(key: key);
 
   @override
@@ -44,181 +29,603 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          // decoration: const BoxDecoration(
-          //     image: DecorationImage(
-          //         image: AssetImage("assets/images/homepage.png"),
-          //         fit: BoxFit.cover)),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Digital Products',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17,
+        body: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height + 100,
+            width: MediaQuery.of(context).size.width,
+            // decoration: const BoxDecoration(
+            //     image: DecorationImage(
+            //         image: AssetImage("assets/images/homepage.png"),
+            //         fit: BoxFit.cover)),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Digital Products',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
                     ),
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomePage(),
-                            ),
-                          );
-                        },
-                        child: const Text('All')),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: ListView(
-                  // This next line does the trick.
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/iphone13.png"),
-                                        fit: BoxFit.fill),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8.0)),
-                                    color: Colors.black),
-                                height: 120,
-                                width: 120,
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
                               ),
-                            ),
-                              const Text('iphone 13\n+1000' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),)
-                          ],
-                        ),
-                         Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(left: 48),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/laptopLegion5.png"),
-                                        fit: BoxFit.fill),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8.0)),
-                                    color: Colors.black),
-                               height: 120,
-                                width: 120,
-                              ),
-                            ),
-                             const Padding(
-                                padding: EdgeInsets.only(left: 48),
-                                child:  Text('legion 5\n+500' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),),
-                              )
-                          ],
-                        ),
-                         Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(left: 48),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/ipad.png"),
-                                        fit: BoxFit.fill),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8.0)),
-                                    color: Colors.black),
-                               height: 120,
-                                width: 120,
-                              ),
-                            ),
-                             const Padding(
-                                padding: EdgeInsets.only(left: 48),
-                                child:  Text('ipad pro\n+2000' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),),
-                              )
-                          ],
-                        ),
-                      ],
+                            );
+                          },
+                          child: const Text('See All')),
                     )
                   ],
                 ),
-              ),
-              //Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: [
-              //     ListView.builder(
-              //         itemBuilder: (context, index) {
-              //           return Card(
-              //               child: Container(
-              //                   decoration: const BoxDecoration(
-              //                       image: DecorationImage(
-              //                           image: AssetImage(
-              //                               "assets/images/iphone13.png"),
-              //                           fit: BoxFit.cover)),
-              //                   child: const Text(
-              //                     'iphone 13',
-              //                     style: TextStyle(fontWeight: FontWeight.bold),
-              //                   )),
-              //               shape: const RoundedRectangleBorder(
-              //                 borderRadius: BorderRadius.all(
-              //                   Radius.circular(8.0),
-              //                 ),
-              //               ));
-              //         },
-              //       )
-              //   ],
-              //  ),
-              const Text(
-                'Vehicle,Industrial tools',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                const SizedBox(
+                  height: 5,
                 ),
-                textAlign: TextAlign.left,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              //SizedBox(height: 20,),
-            ],
+                Expanded(
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/iphone13.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Text(
+                                'mobile\n+1000',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.italic),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/laptopLegion5.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'laptop\n+500',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/ipad.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'ipad & tablet\n+2000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/appleWatch.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'watch\n+500',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Clothes',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          },
+                          child: const Text('See All')),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Expanded(
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/kids.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Text(
+                                'Kids\n+1000',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.italic),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/men.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'Men\n+5000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/women.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'Women\n+2000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Books&Stationery',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          },
+                          child: const Text('See All')),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Expanded(
+                  child: ListView(
+                    // This next line does the trick.
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/books.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Text(
+                                'Books\n+1000',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.italic),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/stationery.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'Stationery\n+5000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/music.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'Music\n+2000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/handcrafts.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'Handcrafts\n+2000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Sport&Travel',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
+                          },
+                          child: const Text('See All')),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Expanded(
+                  child: ListView(
+                    // This next line does the trick.
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/sportclothes.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Text(
+                                'Sport Clothes\n+1000',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.italic),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/sportinggoods.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'Sporting Goods\n+5000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/travel.png"),
+                                          fit: BoxFit.fill),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(8.0)),
+                                      color: Colors.black),
+                                  height: 120,
+                                  width: 120,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 48),
+                                child: Text(
+                                  'Travel&Camping\n+2000',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          fixedColor: Colors.black,
-          unselectedItemColor: Colors.black,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.apps), label: 'Categories'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart), label: 'Shopping Cart'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle), label: 'Account'),
-          ],
-          //selectedItemColor: Colors.white,
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.black)
+          ),
+          child: BottomNavigationBar(
+            fixedColor: Colors.black,
+            unselectedItemColor: Colors.black,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.apps), label: 'Categories'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_cart), label: 'Shopping Cart'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle), label: 'Account'),
+            ],
+            //selectedItemColor: Colors.white,
+          ),
         ),
       ),
     );

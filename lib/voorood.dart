@@ -16,43 +16,58 @@ class Vorod extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('LOGIN' , style: TextStyle(fontSize: 25 , fontWeight: FontWeight.bold),),
+                const Text(
+                  'LOGIN',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 50),
                 const TextField(
-                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                    hintText: 'Phonenumber',
-                    iconColor: Color.fromARGB(255, 78, 255, 223))
-                ),
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0))),
+                        hintText: 'Phonenumber',
+                        iconColor: Color.fromARGB(255, 78, 255, 223))),
                 const SizedBox(height: 40),
                 const TextField(
-                  obscureText: true,
-                   decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                    hintText: 'Password',
-                    iconColor: Color.fromARGB(255, 78, 175, 255))
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0))),
+                        hintText: 'Password',
+                        iconColor: Color.fromARGB(255, 78, 175, 255))),
+                const SizedBox(
+                  height: 50,
                 ),
-                const SizedBox(height: 50,),
                 SizedBox(
-                  height: 30,
-                  width: 100,
-                  child: ElevatedButton(onPressed:(){
-                   Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>  HomePage(),
-                    ),
-                  );
-                },
-                 child: const Text('Login')
-                )
-               )
+                    height: 30,
+                    width: 100,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
+                      },
+                      child: const Text('Login'),
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side: const BorderSide(
+                                          color: Color.fromARGB(
+                                              255, 54, 200, 244))))),
+                    ))
               ],
             ),
             decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage("assets/images/login.PNG"),
-              fit: BoxFit.cover
-              ),
+              image: DecorationImage(
+                  image: AssetImage("assets/images/login.PNG"),
+                  fit: BoxFit.cover),
             ),
           ),
         ),
