@@ -1,3 +1,4 @@
+import 'package:digikala/Iphone13.dart';
 import 'package:flutter/material.dart';
 
 class Phone extends StatelessWidget {
@@ -53,7 +54,7 @@ class Phone extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Phone(),
+                          builder: (context) => const Iphone13(),
                         ),
                       );
                     },
