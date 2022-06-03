@@ -90,7 +90,7 @@ class Phone extends StatelessWidget {
                               height: 20,
                             ),
                             Padding(
-                              padding: EdgeInsets.only(bottom: 100, right: 190),
+                              padding: EdgeInsets.only(bottom: 100, right: 160 , left: 10),
                               child: Text(
                                 r'Price: &999.00',
                                 style: TextStyle(fontStyle: FontStyle.italic),
