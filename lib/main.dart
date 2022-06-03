@@ -1,3 +1,4 @@
+import 'dart:ui';
 
 import 'package:digikala/homePage.dart';
 import 'package:digikala/voorood.dart';
@@ -27,97 +28,112 @@ class SignUp extends StatelessWidget {
         child: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/login.png"),
+                  image: AssetImage("assets/images/homepage.png"),
                   fit: BoxFit.cover)),
           padding: const EdgeInsets.only(right: 30, left: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Create Account',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-               const Padding(
-                padding: EdgeInsets.all(20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                      hintText: 'Firstname',
-                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Create Account',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                      hintText: 'Lastname',
-                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(20),
-                child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                      hintText: 'Password',
-                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0))),
+                        hintText: 'Firstname',
+                        iconColor: Colors.black),
+                  ),
                 ),
-              ),
-             const Padding(
-                padding: EdgeInsets.all(20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                      hintText: 'Phonenumber',
-                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0))),
+                        hintText: 'Lastname',
+                        iconColor: Colors.black),
+                  ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                      hintText: 'email',
-                      iconColor: Color.fromARGB(255, 78, 175, 255)),
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0))),
+                        hintText: 'Password',
+                        iconColor: Colors.black),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 30,
-                width: 100,
-              child: ElevatedButton(onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePage(),
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0))),
+                        hintText: 'Phonenumber',
+                        iconColor: Colors.black),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32.0))),
+                        hintText: 'email',
+                        iconColor: Colors.black),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                  width: 100,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                      );
+                    },
+                    child: const Text('Sign in'),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: const BorderSide(color: Colors.black))),
                     ),
-                  );
-              }, child: const Text('Sign in'),style: ButtonStyle(
-                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                       RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: const BorderSide(color: Color.fromARGB(255, 54, 200, 244))
-                    )
-                 )
+                  ),
                 ),
-               ),
-              ),
-              TextButton(
-                child: const Text('already have an account?'),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Vorod(),
-                    ),
-                  );
-                },
-              )
-            ],
+                TextButton(
+                  child: const Text('already have an account?'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Vorod(),
+                      ),
+                    );
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),

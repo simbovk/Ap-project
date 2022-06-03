@@ -81,7 +81,7 @@ class Phone extends StatelessWidget {
                               padding: EdgeInsets.only(
                                   right: 10, left: 10, bottom: 35),
                               child: Text(
-                                'Apple iPhone 13 Pro (128GB, Sierra\n Blue) [Locked] + Carrier Subscription...',
+                                'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
                                 style: TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               ),
