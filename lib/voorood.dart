@@ -58,11 +58,12 @@ class Vorod extends StatelessWidget {
                         },
                         child: const Text('Login'),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.black),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.black),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                        ))),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ))),
                       ))
                 ],
               ),

@@ -1,10 +1,9 @@
 import 'package:digikala/PhoneCat.dart';
+import 'package:digikala/Profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -621,17 +620,47 @@ class HomePage extends StatelessWidget {
           child: BottomNavigationBar(
             fixedColor: Colors.black,
             unselectedItemColor: Colors.black,
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: IconButton(
+                  icon: const Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
+                  },
+                ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.apps), label: 'Categories'),
+                  icon: IconButton(
+                  icon: const Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
+                  },
+                ), label: 'Categories'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.shopping_cart), label: 'Shopping Cart'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle), label: 'Account'),
+                  icon: IconButton(
+                  icon: const Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  },
+                ), label: 'Account'),
             ],
             //selectedItemColor: Colors.white,
           ),
