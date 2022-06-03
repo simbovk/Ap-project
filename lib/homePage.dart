@@ -637,7 +637,7 @@ class HomePage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                   icon: IconButton(
-                  icon: const Icon(Icons.home),
+                  icon: const Icon(Icons.category_outlined),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -647,11 +647,21 @@ class HomePage extends StatelessWidget {
                     );
                   },
                 ), label: 'Categories'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart), label: 'Shopping Cart'),
+               BottomNavigationBarItem(
+                  icon: IconButton(
+                  icon:  const Icon(Icons.shopping_cart),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ),
+                    );
+                  },),
+                  label: 'Shopping Cart'),
               BottomNavigationBarItem(
                   icon: IconButton(
-                  icon: const Icon(Icons.home),
+                  icon: const Icon(Icons.account_circle),
                   onPressed: () {
                     Navigator.push(
                       context,
