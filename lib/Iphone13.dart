@@ -4,6 +4,7 @@ import 'dart:html';
 import 'dart:ui';
 
 import 'package:digikala/Product.dart';
+import 'package:digikala/ShoppingCartPage.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -199,49 +200,53 @@ class Iphone13 extends StatelessWidget {
                                 blurRadius: 5) //blur radius of shadow
                           ]),
                       child: DropdownButton(
-                        items:  [
+                        items: [
                           DropdownMenuItem(
                             child: Container(
-                              color: Colors.black,
-                              child: const Text("black")),
+                                color: Colors.black,
+                                child: const Text("black")),
                             value: Colors.black,
                           ),
                           DropdownMenuItem(
                             child: Container(
-                              color: Colors.white,
-                              child: const Text("white" , style: TextStyle(color: Colors.black),)),
+                                color: Colors.white,
+                                child: const Text(
+                                  "white",
+                                  style: TextStyle(color: Colors.black),
+                                )),
                             value: Colors.white,
                           ),
                           DropdownMenuItem(
                             child: Container(
-                              color: Color.fromARGB(255, 4, 36, 52),
-                              child: const Text("blue")),
+                                color: Color.fromARGB(255, 4, 36, 52),
+                                child: const Text("blue")),
                             value: const Color.fromARGB(255, 4, 36, 52),
                           ),
-                           DropdownMenuItem(
+                          DropdownMenuItem(
                             child: Container(
-                              color: const Color.fromARGB(255, 207, 37, 25),
-                              child: const Text("red")),
+                                color: const Color.fromARGB(255, 207, 37, 25),
+                                child: const Text("red")),
                             value: const Color.fromARGB(255, 207, 37, 25),
                           ),
-                           DropdownMenuItem(
+                          DropdownMenuItem(
                             child: Container(
-                              color: const Color.fromARGB(255, 255, 122, 166),
-                              child: const Text("pink")),
+                                color: const Color.fromARGB(255, 255, 122, 166),
+                                child: const Text("pink")),
                             value: const Color.fromARGB(255, 255, 122, 166),
                           ),
                           DropdownMenuItem(
                             child: Container(
-                              color: const Color.fromARGB(255, 1, 46, 18),
-                              child: const Text("green")),
+                                color: const Color.fromARGB(255, 1, 46, 18),
+                                child: const Text("green")),
                             value: const Color.fromARGB(255, 1, 46, 18),
                           ),
                         ],
                         onChanged: (value) {
-                          Product(productColor: value , name: 'iphone13');
+                          Product(productColor: value, name: 'iphone13');
                         }, //make true to take width of parent widget
                         underline: Container(), //empty line
-                        style: const TextStyle(fontSize: 18, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.white),
                         iconEnabledColor: Colors.white, //Icon color
                       )),
                 ),
@@ -263,7 +268,11 @@ class Iphone13 extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 400),
-                child: Text(r'$999.00' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),),
+                child: Text(
+                  r'$999.00',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+                ),
               ),
               const SizedBox(
                 height: 10,
@@ -279,13 +288,21 @@ class Iphone13 extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.only(right: 420),
-                child: Text("⭐️4.9" , style: TextStyle(fontWeight: FontWeight.bold )),
+                child: Text("⭐️4.9",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
               ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ShoppingCart(),
+              ),
+            );
+          },
           backgroundColor: Colors.black,
           child: const IconTheme(
             data: IconThemeData(color: Colors.white),
