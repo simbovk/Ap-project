@@ -1,45 +1,225 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 
-class ShoppingCart
- extends StatefulWidget {
-   const ShoppingCart
-  ({Key? key}) : super(key: key);
+import 'Profile.dart';
+import 'homePage.dart';
+
+class ShoppingCart extends StatefulWidget {
+  const ShoppingCart({Key? key}) : super(key: key);
 
   @override
-  State <ShoppingCart> createState() =>  ShoppingCartState();
+  State<ShoppingCart> createState() => ShoppingCartState();
 }
 
-class  ShoppingCartState extends State<ShoppingCart>{
+class ShoppingCartState extends State<ShoppingCart> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: DefaultTabController(
-                length: 2,
-                initialIndex: 0,
-                child: Column(
-                  children: [
-                    Container(
-                      child: TabBar(
-                          labelColor: Colors.purple,
-                          unselectedLabelColor: Colors.white,
-                          tabs: [
-                            Tab(child: Text("Posts")),
-                            Tab(child: Text("About")),
-                          ]),
-                    ),
-                    SizedBox(
-                      height: 400,
-                      child: TabBarView(
-                        children: <Widget>[
-                         
+          length: 2,
+          initialIndex: 0,
+          child: Column(
+            children: [
+              Container(
+                child: const TabBar(
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.black,
+                    tabs: [
+                      Tab(
+                        child: Text("Your Cart"),
+                        icon: Icon(Icons.shopping_bag_outlined),
+                      ),
+                      Tab(
+                        child: Text("Your Product"),
+                        icon: Icon(Icons.view_list),
+                      ),
+                    ]),
+              ),
+              SingleChildScrollView(
+                child: SizedBox(
+                  height: 400,
+                  child: TabBarView(
+                    children: <Widget>[
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/iphone13.png"),
+                                        fit: BoxFit.fill),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8.0)),
+                                  ),
+                                  height: 250,
+                                  width: 150,
+                                ),
+                              ),
+                              Column(
+                                children: const [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 10, left: 10, bottom: 35),
+                                    child: Text(
+                                      'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: 100, right: 160, left: 10),
+                                    child: Text(
+                                      r'Price: &999.00',
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.italic),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
                         ],
                       ),
-                    ),
-                  ],
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/iphone13.png"),
+                                        fit: BoxFit.fill),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8.0)),
+                                  ),
+                                  height: 250,
+                                  width: 150,
+                                ),
+                              ),
+                              Column(
+                                children: const [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        right: 10, left: 10, bottom: 35),
+                                    child: Text(
+                                      'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: 100, right: 160, left: 10),
+                                    child: Text(
+                                      r'Price: &999.00',
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.italic),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.black,
+          ),
+          child: Container(
+            //color: Colors.black,
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white), color: Colors.black),
+            child: BottomNavigationBar(
+              fixedColor: Colors.white,
+              unselectedItemColor: Colors.white,
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: IconButton(
+                    icon: const Icon(Icons.home),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                    icon: IconButton(
+                      icon: const Icon(Icons.category_outlined),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                      },
+                    ),
+                    label: 'Categories'),
+                BottomNavigationBarItem(
+                    icon: IconButton(
+                      icon: const Icon(Icons.shopping_cart),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ShoppingCart(),
+                          ),
+                        );
+                      },
+                    ),
+                    label: 'Shopping Cart'),
+                BottomNavigationBarItem(
+                    icon: IconButton(
+                      icon: const Icon(Icons.account_circle),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfilePage(),
+                          ),
+                        );
+                      },
+                    ),
+                    label: 'Account'),
+              ],
+              //selectedItemColor: Colors.white,
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:digikala/PhoneCat.dart';
 import 'package:digikala/Profile.dart';
+import 'package:digikala/ShoppingCartPage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -654,7 +655,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ProfilePage(),
+                        builder: (context) => const ShoppingCart(),
                       ),
                     );
                   },),
