@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new
+
 import 'dart:html';
 
 import 'package:digikala/Product.dart';
@@ -163,11 +165,62 @@ class Iphone13 extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              // const Text('Colors'),
+              Padding(
+                padding: const EdgeInsets.only(right: 440),
+                child: Text(
+                  'Color',
+                  style: TextStyle(
+                      color: Colors.blue.withOpacity(0.6), fontSize: 16),
+                  textAlign: TextAlign.left,
+                ),
+              ),
               const SizedBox(
                 height: 5,
               ),
-              Row(),
+              Padding(
+                padding: const EdgeInsets.only(right: 370),
+                child: Container(
+                  height: 30,
+                  width: 100,
+                  child: DecoratedBox(
+                      decoration: BoxDecoration(
+                          gradient: const LinearGradient(colors: [
+                            Colors.redAccent,
+                            Colors.blueAccent,
+                            Colors.purpleAccent
+                            //add more colors
+                          ]),
+                          borderRadius: BorderRadius.circular(5),
+                          boxShadow: const <BoxShadow>[
+                            BoxShadow(
+                                color: Color.fromRGBO(
+                                    0, 0, 0, 0.57), //shadow for button
+                                blurRadius: 5) //blur radius of shadow
+                          ]),
+                      child: DropdownButton(
+                        items: const [
+                          DropdownMenuItem(
+                            child: Text("black"),
+                            value: Colors.black,
+                          ),
+                          DropdownMenuItem(
+                            child: Text("white"),
+                            value: Colors.black,
+                          ),
+                          DropdownMenuItem(
+                            child: Text("blue"),
+                            value: Colors.black,
+                          ),
+                        ],
+                        onChanged: (value) {
+                          Product(productColor: value , name: 'iphone13');
+                        }, //make true to take width of parent widget
+                        underline: Container(), //empty line
+                        style: const TextStyle(fontSize: 18, color: Colors.white),
+                        iconEnabledColor: Colors.white, //Icon color
+                      )),
+                ),
+              )
             ],
           ),
         ),
