@@ -66,31 +66,44 @@ class ShoppingCartState extends State<ShoppingCart> {
                                 children: const [
                                   Padding(
                                     padding: EdgeInsets.only(
-                                        right: 10, left: 10, bottom: 35),
-                                    child: Text(
-                                      'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
+                                        right: 10, left: 10, bottom: 55),
+                                    child: Padding(
+                                      padding: EdgeInsets.only(bottom: 100),
+                                      child: Text(
+                                        'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        bottom: 100, right: 160, left: 10),
-                                    child: Text(
-                                      r'Price: &999.00',
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic),
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  )
                                 ],
                               ),
                             ],
                           ),
+                          Row(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.only(left: 30),
+                                child: Text('Blue' , ),
+                              ),
+                              SizedBox(width: 3,),
+                              Container(
+                                height: 30,
+                                width: 30,
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(32.0)),
+                                    color: Colors.blue),
+                              ),
+                              const SizedBox( width: 30,),
+                              const Text(
+                                r'Price: &999.00',
+                                style: TextStyle(fontStyle: FontStyle.italic),
+                                textAlign: TextAlign.left,
+                              )
+                            ],
+                          )
                         ],
                       ),
                       Column(
@@ -113,8 +126,8 @@ class ShoppingCartState extends State<ShoppingCart> {
                                 ),
                               ),
                               Column(
-                                children: const [
-                                  Padding(
+                                children: [
+                                  const Padding(
                                     padding: EdgeInsets.only(
                                         right: 10, left: 10, bottom: 35),
                                     child: Text(
@@ -124,10 +137,10 @@ class ShoppingCartState extends State<ShoppingCart> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 20,
                                   ),
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.only(
                                         bottom: 100, right: 160, left: 10),
                                     child: Text(
