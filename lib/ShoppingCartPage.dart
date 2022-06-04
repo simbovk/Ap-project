@@ -91,31 +91,26 @@ class ShoppingCartState extends State<ShoppingCart> {
                                     SizedBox(
                                       width: 30,
                                       height: 30,
-                                      child: Center(
-                                        child: ElevatedButton(
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.black),
-                                              shape: MaterialStateProperty.all<
-                                                      RoundedRectangleBorder>(
-                                                  RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18.0),
-                                                      side: const BorderSide(
-                                                          color: Colors.black))),
-                                            ),
-                                            onPressed: () {
-                                              setState(() {
-                                                counter++;
-                                              });
-                                            },
-                                            child: const Padding(
-                                              padding: EdgeInsets.only(right: 5),
-                                              child: Icon(Icons.add),
-                                            )),
-                                      ),
+                                      child: ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white),
+                                            shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    side: const BorderSide(
+                                                        color: Colors.white))),
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              counter++;
+                                            });
+                                          },
+                                          child: const Icon(Icons.add , color: Colors.black, size: 20,)),
                                     ),
                                     const SizedBox(
                                       width: 5,
@@ -131,31 +126,27 @@ class ShoppingCartState extends State<ShoppingCart> {
                                     SizedBox(
                                       width: 30,
                                       height: 30,
-                                      child: Center(
-                                        child: ElevatedButton(
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.black),
-                                              shape: MaterialStateProperty.all<
-                                                      RoundedRectangleBorder>(
-                                                  RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18.0),
-                                                      side: const BorderSide(
-                                                          color: Colors.black))),
-                                            ),
-                                            onPressed: () {
-                                              setState(() {
-                                                counter--;
-                                              });
-                                            },
-                                            child: const Padding(
-                                              padding: EdgeInsets.only(right: 5),
-                                              child: Icon(
-                                                  Icons.restore_from_trash),
-                                            )),
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.white),
+                                            shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    side: const BorderSide(
+                                                        color: Colors.white))),
+                                          ),
+                                        onPressed: () {
+                                            setState(() {
+                                              counter--;
+                                            });
+                                          },
+                                        child: const Icon(
+                                            Icons.restore_from_trash , color: Colors.black, size: 20,),
                                       ),
                                     ),
                                   ],
@@ -212,8 +203,8 @@ class ShoppingCartState extends State<ShoppingCart> {
                                 ),
                               ),
                               Column(
-                                children: [
-                                  const Padding(
+                                children: const [
+                                  Padding(
                                     padding: EdgeInsets.only(
                                         right: 10, left: 10, bottom: 35),
                                     child: Text(
@@ -223,10 +214,10 @@ class ShoppingCartState extends State<ShoppingCart> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  const SizedBox(
+                                  SizedBox(
                                     height: 20,
                                   ),
-                                  const Padding(
+                                  Padding(
                                     padding: EdgeInsets.only(
                                         bottom: 100, right: 160, left: 10),
                                     child: Text(
