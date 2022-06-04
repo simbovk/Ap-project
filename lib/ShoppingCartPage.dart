@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:digikala/FinishBuying.dart';
 import 'package:flutter/material.dart';
 
 import 'Profile.dart';
@@ -17,7 +18,7 @@ class ShoppingCart extends StatefulWidget {
 class ShoppingCartState extends State<ShoppingCart> {
   static const IconData trash = IconData(0xf4c4);
   int counter = 1;
-  int price = 0;
+  int price = 999;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -266,7 +267,7 @@ class ShoppingCartState extends State<ShoppingCart> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomePage(),
+                        builder: (context) => const FinishBuying(),
                       ),
                     );
                   },
@@ -275,12 +276,12 @@ class ShoppingCartState extends State<ShoppingCart> {
                     backgroundColor: MaterialStateProperty.all(Colors.black),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
+                            borderRadius: BorderRadius.circular(10.0),
                             side: const BorderSide(color: Colors.black))),
                   ),
                 ) , label: 'Finish'),
-                const BottomNavigationBarItem(
-                icon:Text(r'$price Dollar' , style: TextStyle(fontSize: 26 , fontStyle: FontStyle.italic),), label: 'Price')
+               BottomNavigationBarItem(
+                icon:Text('$price Dollar' , style: const TextStyle(fontSize: 26 , fontStyle: FontStyle.italic , fontWeight: FontWeight.bold),), label: 'Price')
             ],
             //selectedItemColor: Colors.white,
           ),
