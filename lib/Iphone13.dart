@@ -245,7 +245,23 @@ class Iphone13 extends StatelessWidget {
                         iconEnabledColor: Colors.white, //Icon color
                       )),
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 440),
+                child: Text(
+                  'Price',
+                  style: TextStyle(
+                      color: Colors.blue.withOpacity(0.6), fontSize: 16),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const Text(r'$999.00' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),)
             ],
           ),
         ),
