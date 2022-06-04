@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new
 
 import 'dart:html';
+import 'dart:ui';
 
 import 'package:digikala/Product.dart';
 import 'package:flutter/material.dart';
@@ -198,18 +199,42 @@ class Iphone13 extends StatelessWidget {
                                 blurRadius: 5) //blur radius of shadow
                           ]),
                       child: DropdownButton(
-                        items: const [
+                        items:  [
                           DropdownMenuItem(
-                            child: Text("black"),
+                            child: Container(
+                              color: Colors.black,
+                              child: const Text("black")),
                             value: Colors.black,
                           ),
                           DropdownMenuItem(
-                            child: Text("white"),
-                            value: Colors.black,
+                            child: Container(
+                              color: Colors.white,
+                              child: const Text("white" , style: TextStyle(color: Colors.black),)),
+                            value: Colors.white,
                           ),
                           DropdownMenuItem(
-                            child: Text("blue"),
-                            value: Colors.black,
+                            child: Container(
+                              color: Color.fromARGB(255, 4, 36, 52),
+                              child: const Text("blue")),
+                            value: const Color.fromARGB(255, 4, 36, 52),
+                          ),
+                           DropdownMenuItem(
+                            child: Container(
+                              color: const Color.fromARGB(255, 207, 37, 25),
+                              child: const Text("red")),
+                            value: const Color.fromARGB(255, 207, 37, 25),
+                          ),
+                           DropdownMenuItem(
+                            child: Container(
+                              color: const Color.fromARGB(255, 255, 122, 166),
+                              child: const Text("pink")),
+                            value: const Color.fromARGB(255, 255, 122, 166),
+                          ),
+                          DropdownMenuItem(
+                            child: Container(
+                              color: const Color.fromARGB(255, 1, 46, 18),
+                              child: const Text("green")),
+                            value: const Color.fromARGB(255, 1, 46, 18),
                           ),
                         ],
                         onChanged: (value) {
