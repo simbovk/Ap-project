@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_const
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'Profile.dart';
@@ -13,6 +15,8 @@ class ShoppingCart extends StatefulWidget {
 }
 
 class ShoppingCartState extends State<ShoppingCart> {
+  static const IconData trash = IconData(0xf4c4);
+  int counter = 1;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -67,14 +71,11 @@ class ShoppingCartState extends State<ShoppingCart> {
                                   Padding(
                                     padding: EdgeInsets.only(
                                         right: 10, left: 10, bottom: 55),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(bottom: 100),
-                                      child: Text(
-                                        'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                    child: Text(
+                                      'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ],
@@ -83,11 +84,92 @@ class ShoppingCartState extends State<ShoppingCart> {
                           ),
                           Row(
                             children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 30,
+                                      height: 30,
+                                      child: Center(
+                                        child: ElevatedButton(
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.black),
+                                              shape: MaterialStateProperty.all<
+                                                      RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              18.0),
+                                                      side: const BorderSide(
+                                                          color: Colors.black))),
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                counter++;
+                                              });
+                                            },
+                                            child: const Padding(
+                                              padding: EdgeInsets.only(right: 5),
+                                              child: Icon(Icons.add),
+                                            )),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      '$counter',
+                                      style:
+                                          const TextStyle(color: Colors.black , fontWeight: FontWeight.bold),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                      height: 30,
+                                      child: Center(
+                                        child: ElevatedButton(
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.black),
+                                              shape: MaterialStateProperty.all<
+                                                      RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              18.0),
+                                                      side: const BorderSide(
+                                                          color: Colors.black))),
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                counter--;
+                                              });
+                                            },
+                                            child: const Padding(
+                                              padding: EdgeInsets.only(right: 5),
+                                              child: Icon(
+                                                  Icons.restore_from_trash),
+                                            )),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               const Padding(
                                 padding: EdgeInsets.only(left: 30),
-                                child: Text('Blue' , ),
+                                child: Text(
+                                  'Blue',
+                                ),
                               ),
-                              SizedBox(width: 3,),
+                              const SizedBox(
+                                width: 3,
+                              ),
                               Container(
                                 height: 30,
                                 width: 30,
@@ -96,10 +178,14 @@ class ShoppingCartState extends State<ShoppingCart> {
                                         BorderRadius.all(Radius.circular(32.0)),
                                     color: Colors.blue),
                               ),
-                              const SizedBox( width: 30,),
+                              const SizedBox(
+                                width: 30,
+                              ),
                               const Text(
                                 r'Price: &999.00',
-                                style: TextStyle(fontStyle: FontStyle.italic),
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left,
                               )
                             ],
