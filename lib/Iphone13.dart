@@ -261,7 +261,26 @@ class Iphone13 extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              const Text(r'$999.00' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),)
+              const Padding(
+                padding: EdgeInsets.only(right: 400),
+                child: Text(r'$999.00' , style: TextStyle(fontWeight: FontWeight.bold , fontStyle: FontStyle.italic),),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 440),
+                child: Text(
+                  'Rate',
+                  style: TextStyle(
+                      color: Colors.blue.withOpacity(0.6), fontSize: 16),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(right: 420),
+                child: Text("⭐️4.9" , style: TextStyle(fontWeight: FontWeight.bold )),
+              ),
             ],
           ),
         ),
