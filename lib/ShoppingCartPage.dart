@@ -17,6 +17,7 @@ class ShoppingCart extends StatefulWidget {
 class ShoppingCartState extends State<ShoppingCart> {
   static const IconData trash = IconData(0xf4c4);
   int counter = 1;
+  int price = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -89,8 +90,8 @@ class ShoppingCartState extends State<ShoppingCart> {
                                 child: Row(
                                   children: [
                                     SizedBox(
-                                      width: 30,
-                                      height: 30,
+                                      width: 60,
+                                      height: 40,
                                       child: ElevatedButton(
                                           style: ButtonStyle(
                                             backgroundColor:
@@ -101,52 +102,63 @@ class ShoppingCartState extends State<ShoppingCart> {
                                                 RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            10.0),
+                                                            13.0),
                                                     side: const BorderSide(
                                                         color: Colors.white))),
                                           ),
                                           onPressed: () {
                                             setState(() {
                                               counter++;
+                                              price += 999;
                                             });
                                           },
-                                          child: const Icon(Icons.add , color: Colors.black, size: 20,)),
+                                          child: const Icon(
+                                            Icons.add,
+                                            color: Colors.black,
+                                            size: 25,
+                                          )),
                                     ),
                                     const SizedBox(
                                       width: 5,
                                     ),
                                     Text(
                                       '$counter',
-                                      style:
-                                          const TextStyle(color: Colors.black , fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
                                     ),
                                     const SizedBox(
                                       width: 5,
                                     ),
                                     SizedBox(
-                                      width: 30,
-                                      height: 30,
+                                      width: 60,
+                                      height: 40,
                                       child: ElevatedButton(
                                         style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.white),
-                                            shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0),
-                                                    side: const BorderSide(
-                                                        color: Colors.white))),
-                                          ),
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.white),
+                                          shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          13.0),
+                                                  side: const BorderSide(
+                                                      color: Colors.white))),
+                                        ),
                                         onPressed: () {
-                                            setState(() {
-                                              counter--;
-                                            });
-                                          },
+                                          setState(() {
+                                            counter--;
+                                            price -= 999;
+                                          });
+                                        },
                                         child: const Icon(
-                                            Icons.restore_from_trash , color: Colors.black, size: 20,),
+                                          Icons.restore_from_trash,
+                                          color: Colors.black,
+                                          size: 25,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -240,74 +252,37 @@ class ShoppingCartState extends State<ShoppingCart> {
             ],
           ),
         ),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: Colors.black,
-          ),
-          child: Container(
-            //color: Colors.black,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white), color: Colors.black),
-            child: BottomNavigationBar(
-              fixedColor: Colors.white,
-              unselectedItemColor: Colors.white,
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: IconButton(
-                    icon: const Icon(Icons.home),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
-                    },
+        bottomNavigationBar: Container(
+          //color: Colors.black,
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.black), color: Colors.white),
+          child: BottomNavigationBar(
+            fixedColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
+                  },
+                  child: const Text('Finish Buying Proccess'),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.black),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: const BorderSide(color: Colors.black))),
                   ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                    icon: IconButton(
-                      icon: const Icon(Icons.category_outlined),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
-                      },
-                    ),
-                    label: 'Categories'),
-                BottomNavigationBarItem(
-                    icon: IconButton(
-                      icon: const Icon(Icons.shopping_cart),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ShoppingCart(),
-                          ),
-                        );
-                      },
-                    ),
-                    label: 'Shopping Cart'),
-                BottomNavigationBarItem(
-                    icon: IconButton(
-                      icon: const Icon(Icons.account_circle),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ProfilePage(),
-                          ),
-                        );
-                      },
-                    ),
-                    label: 'Account'),
-              ],
-              //selectedItemColor: Colors.white,
-            ),
+                ) , label: 'Finish'),
+                const BottomNavigationBarItem(
+                icon:Text(r'$price Dollar' , style: TextStyle(fontSize: 26 , fontStyle: FontStyle.italic),), label: 'Price')
+            ],
+            //selectedItemColor: Colors.white,
           ),
         ),
       ),
