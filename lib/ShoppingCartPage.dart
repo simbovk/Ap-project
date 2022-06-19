@@ -45,6 +45,7 @@ class ShoppingCartState extends State<ShoppingCart> {
                     ]),
               ),
               SingleChildScrollView(
+                scrollDirection: Axis.vertical,
                 child: SizedBox(
                   height: 400,
                   child: TabBarView(
@@ -197,52 +198,69 @@ class ShoppingCartState extends State<ShoppingCart> {
                         ],
                       ),
                       Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/iphone13.png"),
-                                        fit: BoxFit.fill),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8.0)),
-                                  ),
-                                  height: 250,
-                                  width: 150,
-                                ),
-                              ),
-                              Column(
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 10, left: 10, bottom: 35),
-                                    child: Text(
-                                      'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        bottom: 100, right: 160, left: 10),
-                                    child: Text(
-                                      r'Price: &999.00',
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic),
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text('Product Information' , style: TextStyle(fontWeight: FontWeight.bold , fontSize: 26),),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0))),
+                                  hintText: 'Firstname',
+                                  iconColor: Colors.black),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0))),
+                                  hintText: 'Lastname',
+                                  iconColor: Colors.black),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: TextField(
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0))),
+                                  hintText: 'Password',
+                                  iconColor: Colors.black),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0))),
+                                  hintText: 'Phonenumber',
+                                  iconColor: Colors.black),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0))),
+                                  hintText: 'email',
+                                  iconColor: Colors.black),
+                            ),
                           ),
                         ],
                       ),
@@ -262,26 +280,34 @@ class ShoppingCartState extends State<ShoppingCart> {
             unselectedItemColor: Colors.white,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FinishBuying(),
-                      ),
-                    );
-                  },
-                  child: const Text('Finish Buying Proccess'),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            side: const BorderSide(color: Colors.black))),
+                  icon: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FinishBuying(),
+                        ),
+                      );
+                    },
+                    child: const Text('Finish Buying Proccess'),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              side: const BorderSide(color: Colors.black))),
+                    ),
                   ),
-                ) , label: 'Finish'),
-               BottomNavigationBarItem(
-                icon:Text('$price Dollar' , style: const TextStyle(fontSize: 26 , fontStyle: FontStyle.italic , fontWeight: FontWeight.bold),), label: 'Price')
+                  label: 'Finish'),
+              BottomNavigationBarItem(
+                  icon: Text(
+                    '${price}Dollar',
+                    style: const TextStyle(
+                        fontSize: 26,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  label: 'Price')
             ],
             //selectedItemColor: Colors.white,
           ),
