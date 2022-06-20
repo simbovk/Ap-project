@@ -29,25 +29,24 @@ class ShoppingCartState extends State<ShoppingCart> {
           initialIndex: 0,
           child: Column(
             children: [
-              Container(
-                child: const TabBar(
-                    labelColor: Colors.black,
-                    unselectedLabelColor: Colors.black,
-                    tabs: [
-                      Tab(
-                        child: Text("Your Cart"),
-                        icon: Icon(Icons.shopping_bag_outlined),
-                      ),
-                      Tab(
-                        child: Text("Your Product"),
-                        icon: Icon(Icons.view_list),
-                      ),
-                    ]),
-              ),
+              const TabBar(
+                  labelColor: Colors.black,
+                  unselectedLabelColor: Colors.black,
+                  tabs: [
+                    Tab(
+                      child: Text("Your Cart"),
+                      icon: Icon(Icons.shopping_bag_outlined),
+                    ),
+                    Tab(
+                      child: Text("Your Product"),
+                      icon: Icon(Icons.view_list),
+                    ),
+                  ]),
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: SizedBox(
-                  height: 400,
+                  height: MediaQuery.of(context).size.height - 200,
+                  width: MediaQuery.of(context).size.width,
                   child: TabBarView(
                     children: <Widget>[
                       Column(
@@ -304,6 +303,44 @@ class ShoppingCartState extends State<ShoppingCart> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(32.0))),
                                       hintText: 'Quantity',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                      hintText: 'Color',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                      hintText: 'Size',
                                       iconColor: Colors.black),
                                 ),
                               ),
