@@ -200,66 +200,132 @@ class ShoppingCartState extends State<ShoppingCart> {
                       Column(
                         children: const [
                           Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text('Product Information' , style: TextStyle(fontWeight: FontWeight.bold , fontSize: 26),),
+                            padding: EdgeInsets.only(top: 10, left: 10),
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  'Product Information',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24),
+                                  textAlign: TextAlign.left,
+                                )),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(32.0))),
-                                  hintText: 'Firstname',
-                                  iconColor: Colors.black),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                      hintText: 'Category',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(32.0))),
-                                  hintText: 'Lastname',
-                                  iconColor: Colors.black),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                      hintText: 'Products Name',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(32.0))),
-                                  hintText: 'Password',
-                                  iconColor: Colors.black),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                      hintText: 'Seller Name',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(32.0))),
-                                  hintText: 'Phonenumber',
-                                  iconColor: Colors.black),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                      hintText: 'Price',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(32.0))),
-                                  hintText: 'email',
-                                  iconColor: Colors.black),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 50,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(32.0))),
+                                      hintText: 'Quantity',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 100,
+                              width: 300,
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 10, left: 5),
+                                child: TextField(
+                                  textAlign: TextAlign.start,
+                                  decoration: InputDecoration(
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20.0))),
+                                      hintText: 'More Info',
+                                      iconColor: Colors.black),
+                                ),
+                              ),
                             ),
                           ),
                         ],
