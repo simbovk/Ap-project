@@ -27,7 +27,7 @@ class ShoppingCartState extends State<ShoppingCart> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: const Text(
-            'Your Cart',
+            'My Cart',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25 , color: Colors.black),
           ),
           actions:<Widget>[

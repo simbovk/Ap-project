@@ -648,7 +648,7 @@ class HomePage extends StatelessWidget {
                       ),
                     );
                   },
-                ), label: 'Your Product'),
+                ), label: 'My Product'),
                BottomNavigationBarItem(
                   icon: IconButton(
                   icon:  const Icon(Icons.shopping_cart),

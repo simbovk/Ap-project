@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.black,
             title: const Text(
-              'MyAccount',
+              'My Account',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
             actions: <Widget>[

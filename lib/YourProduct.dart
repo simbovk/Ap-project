@@ -13,7 +13,7 @@ class YourProduct extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: const Text(
-            'Your Product',
+            'My Product',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
           ),
           actions: <Widget>[
