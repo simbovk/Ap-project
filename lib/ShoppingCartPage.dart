@@ -2,7 +2,7 @@
 
 import 'dart:ui';
 
-import 'package:digikala/FinishBuying.dart';
+import 'package:digikala/YourProduct.dart';
 import 'package:flutter/material.dart';
 
 import 'Profile.dart';
@@ -388,7 +388,7 @@ class ShoppingCartState extends State<ShoppingCart> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const FinishBuying(),
+                          builder: (context) => const YourProduct(),
                         ),
                       );
                     },
