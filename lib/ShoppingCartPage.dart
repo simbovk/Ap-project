@@ -24,354 +24,160 @@ class ShoppingCartState extends State<ShoppingCart> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: DefaultTabController(
-          length: 2,
-          initialIndex: 0,
-          child: Column(
-            children: [
-              const TabBar(
-                  labelColor: Colors.black,
-                  unselectedLabelColor: Colors.black,
-                  tabs: [
-                    Tab(
-                      child: Text("Your Cart"),
-                      icon: Icon(Icons.shopping_bag_outlined),
-                    ),
-                    Tab(
-                      child: Text("Your Product"),
-                      icon: Icon(Icons.view_list),
-                    ),
-                  ]),
-              SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height - 200,
-                  width: MediaQuery.of(context).size.width,
-                  child: TabBarView(
-                    children: <Widget>[
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/iphone13.png"),
-                                        fit: BoxFit.fill),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8.0)),
-                                  ),
-                                  height: 250,
-                                  width: 150,
-                                ),
-                              ),
-                              Column(
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        right: 10, left: 10, bottom: 55),
-                                    child: Text(
-                                      'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 60,
-                                      height: 40,
-                                      child: ElevatedButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.white),
-                                            shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            13.0),
-                                                    side: const BorderSide(
-                                                        color: Colors.white))),
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              counter++;
-                                              price += 999;
-                                            });
-                                          },
-                                          child: const Icon(
-                                            Icons.add,
-                                            color: Colors.black,
-                                            size: 25,
-                                          )),
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    Text(
-                                      '$counter',
-                                      style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    SizedBox(
-                                      width: 60,
-                                      height: 40,
-                                      child: ElevatedButton(
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.white),
-                                          shape: MaterialStateProperty.all<
-                                                  RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          13.0),
-                                                  side: const BorderSide(
-                                                      color: Colors.white))),
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            counter--;
-                                            price -= 999;
-                                          });
-                                        },
-                                        child: const Icon(
-                                          Icons.restore_from_trash,
-                                          color: Colors.black,
-                                          size: 25,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(left: 30),
-                                child: Text(
-                                  'Blue',
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 3,
-                              ),
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(32.0)),
-                                    color: Colors.blue),
-                              ),
-                              const SizedBox(
-                                width: 30,
-                              ),
-                              const Text(
-                                r'Price: &999.00',
-                                style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.left,
-                              )
-                            ],
-                          )
-                        ],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text(
+            'Your Cart',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25 , color: Colors.black),
+          ),
+          actions:<Widget>[
+            IconButton(icon: Icon(Icons.shopping_bag , color: Colors.black,), onPressed: () {},)
+          ],
+        ),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/images/iphone13.png"),
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        ),
+                        height: 250,
+                        width: 150,
                       ),
-                      Column(
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 10, left: 10),
-                            child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  'Product Information',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24),
-                                  textAlign: TextAlign.left,
+                    ),
+                    Column(
+                      children: const [
+                        Padding(
+                          padding:
+                              EdgeInsets.only(right: 10, left: 10, bottom: 55),
+                          child: Text(
+                            'Apple iPhone 13 Pro (256GB)\n [Locked] + Carrier Subscription...',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 60,
+                            height: 40,
+                            child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.white),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(13.0),
+                                          side: const BorderSide(
+                                              color: Colors.white))),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    counter++;
+                                    price += 999;
+                                  });
+                                },
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.black,
+                                  size: 25,
                                 )),
                           ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            '$counter',
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
                           SizedBox(
-                            height: 5,
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 50,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      hintText: 'Category',
-                                      iconColor: Colors.black),
-                                ),
+                            width: 60,
+                            height: 40,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.white),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(13.0),
+                                        side: const BorderSide(
+                                            color: Colors.white))),
                               ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 50,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      hintText: 'Products Name',
-                                      iconColor: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 50,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      hintText: 'Seller Name',
-                                      iconColor: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 50,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      hintText: 'Price',
-                                      iconColor: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 50,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      hintText: 'Quantity',
-                                      iconColor: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 50,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      hintText: 'Color',
-                                      iconColor: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 50,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(32.0))),
-                                      hintText: 'Size',
-                                      iconColor: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: SizedBox(
-                              height: 100,
-                              width: 300,
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 10, left: 5),
-                                child: TextField(
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20.0))),
-                                      hintText: 'More Info',
-                                      iconColor: Colors.black),
-                                ),
+                              onPressed: () {
+                                setState(() {
+                                  counter--;
+                                  price -= 999;
+                                });
+                              },
+                              child: const Icon(
+                                Icons.restore_from_trash,
+                                color: Colors.black,
+                                size: 25,
                               ),
                             ),
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 30),
+                      child: Text(
+                        'Blue',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 3,
+                    ),
+                    Container(
+                      height: 30,
+                      width: 30,
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                          color: Colors.blue),
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const Text(
+                      r'Price: $999.00',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
         bottomNavigationBar: Container(
@@ -385,12 +191,12 @@ class ShoppingCartState extends State<ShoppingCart> {
               BottomNavigationBarItem(
                   icon: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const YourProduct(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const YourProduct(),
+                      //   ),
+                      // );
                     },
                     child: const Text('Finish Buying Proccess'),
                     style: ButtonStyle(

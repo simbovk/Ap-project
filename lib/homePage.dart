@@ -1,6 +1,7 @@
 import 'package:digikala/PhoneCat.dart';
 import 'package:digikala/Profile.dart';
 import 'package:digikala/ShoppingCartPage.dart';
+import 'package:digikala/YourProduct.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -643,11 +644,11 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomePage(),
+                        builder: (context) => const YourProduct(),
                       ),
                     );
                   },
-                ), label: 'Categories'),
+                ), label: 'Your Product'),
                BottomNavigationBarItem(
                   icon: IconButton(
                   icon:  const Icon(Icons.shopping_cart),

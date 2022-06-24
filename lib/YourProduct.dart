@@ -17,7 +17,7 @@ class YourProduct extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
           ),
           actions: <Widget>[
-            IconButton(icon: const Icon(Icons.badge_rounded), onPressed: () {})
+            IconButton(icon: const Icon(Icons.category , color: Colors.white,), onPressed: () {})
           ],
         ),
         body: SingleChildScrollView(
@@ -32,10 +32,9 @@ class YourProduct extends StatelessWidget {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Padding(
-                    padding: EdgeInsets.only(top: 10, left: 10),
+                    padding: EdgeInsets.only(top: 8 , left: 5),
                     child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -54,7 +53,7 @@ class YourProduct extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -73,7 +72,7 @@ class YourProduct extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -92,7 +91,7 @@ class YourProduct extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -111,7 +110,7 @@ class YourProduct extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -130,7 +129,7 @@ class YourProduct extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -149,7 +148,7 @@ class YourProduct extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -168,7 +167,7 @@ class YourProduct extends StatelessWidget {
                       height: 50,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
@@ -187,7 +186,7 @@ class YourProduct extends StatelessWidget {
                       height: 100,
                       width: 300,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 10, left: 5),
+                        padding: EdgeInsets.only(top: 10),
                         child: TextField(
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
