@@ -13,6 +13,7 @@ class YourProduct extends StatefulWidget {
 
 class YourProductState extends State<YourProduct> {
   File? _image;
+  dynamic image;
 
   Future getImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
@@ -40,6 +41,11 @@ class YourProductState extends State<YourProduct> {
 
   @override
   Widget build(BuildContext context) {
+    if(_image != null){
+      image = Image.file(_image!); 
+    }
+    else
+    image = AssetImage("assets/images/upload.png");
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -60,7 +66,7 @@ class YourProductState extends State<YourProduct> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height + 200,
             width: MediaQuery.of(context).size.width,
             // decoration: const BoxDecoration(
             //     image: DecorationImage(
@@ -71,7 +77,7 @@ class YourProductState extends State<YourProduct> {
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
               child: Column(
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 8, left: 5),
                     child: Align(
                         alignment: Alignment.topLeft,
@@ -82,10 +88,10 @@ class YourProductState extends State<YourProduct> {
                           textAlign: TextAlign.left,
                         )),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 50,
@@ -104,7 +110,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 50,
@@ -123,7 +129,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 50,
@@ -142,7 +148,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 50,
@@ -246,29 +252,41 @@ class YourProductState extends State<YourProduct> {
                                 fontWeight: FontWeight.bold, fontSize: 20)),
                       )),
                   const SizedBox(
-                    height: 40,
+                    height: 20,
                   ),
-                  Container(
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/upload.png"),
-                            fit: BoxFit.fill),
-                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                        color: Colors.black),
-                    height: 120,
-                    width: 120,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 250),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: image,
+                              fit: BoxFit.fill),
+                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          color: Colors.black),
+                      height: 200,
+                      width: 200,
+                    ),
                   ),
                   const SizedBox(
-                    height: 40,
+                    height: 10,
                   ),
-                  customButton(
-                      title: 'Pick from Gallery',
-                      icon: Icons.image_outlined,
-                      onClick: getImageGallery),
-                  customButton(
-                      title: 'Pick from Camera',
-                      icon: Icons.camera_alt_rounded,
-                      onClick: getImage)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 250),
+                    child: customButton(
+                        title: 'Pick from Gallery',
+                        icon: Icons.image_outlined,
+                        onClick: getImageGallery),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 250),
+                    child: customButton(
+                        title: 'Pick from Camera',
+                        icon: Icons.camera_alt_rounded,
+                        onClick: getImage),
+                  )
                 ],
               ),
             ),
@@ -330,8 +348,15 @@ class YourProductState extends State<YourProduct> {
       required IconData icon,
       required VoidCallback onClick}) {
     return Container(
-      width: 280,
+      width: 200,
       child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.black),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                    side: const BorderSide(color: Colors.black))),
+          ),
           onPressed: onClick,
           child: Row(
             children: [
