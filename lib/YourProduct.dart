@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'homePage.dart';
 import 'package:image_picker/image_picker.dart';
+
 class YourProduct extends StatefulWidget {
   const YourProduct({Key? key}) : super(key: key);
 
@@ -10,6 +12,32 @@ class YourProduct extends StatefulWidget {
 }
 
 class YourProductState extends State<YourProduct> {
+  File? _image;
+
+  Future getImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (image == null) {
+      return;
+    }
+    final imageTemporary = File(image.path);
+
+    setState(() {
+      this._image = imageTemporary;
+    });
+  }
+
+  Future getImageGallery() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) {
+      return;
+    }
+    final imageTemporary = File(image.path);
+
+    setState(() {
+      this._image = imageTemporary;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,7 +70,7 @@ class YourProductState extends State<YourProduct> {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
               child: Column(
-                children: const [
+                children: [
                   Padding(
                     padding: EdgeInsets.only(top: 8, left: 5),
                     child: Align(
@@ -133,7 +161,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 50,
@@ -152,7 +180,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 50,
@@ -171,7 +199,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 50,
@@ -190,7 +218,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       height: 100,
@@ -209,7 +237,7 @@ class YourProductState extends State<YourProduct> {
                       ),
                     ),
                   ),
-                  Align(
+                  const Align(
                       alignment: Alignment.topLeft,
                       child: Padding(
                         padding: EdgeInsets.only(left: 10),
@@ -217,12 +245,30 @@ class YourProductState extends State<YourProduct> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 20)),
                       )),
-                  // ElevatedButton(
-
-                  //   onPressed: onPressed,
-                  //    child: ,
-                  // )
-                 
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/upload.png"),
+                            fit: BoxFit.fill),
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                        color: Colors.black),
+                    height: 120,
+                    width: 120,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  customButton(
+                      title: 'Pick from Gallery',
+                      icon: Icons.image_outlined,
+                      onClick: getImageGallery),
+                  customButton(
+                      title: 'Pick from Camera',
+                      icon: Icons.camera_alt_rounded,
+                      onClick: getImage)
                 ],
               ),
             ),
@@ -235,9 +281,12 @@ class YourProductState extends State<YourProduct> {
             fixedColor: Colors.black,
             unselectedItemColor: Colors.white,
             items: <BottomNavigationBarItem>[
-               BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 icon: IconButton(
-                  icon: const Icon(Icons.home , color: Colors.black,),
+                  icon: const Icon(
+                    Icons.home,
+                    color: Colors.black,
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -248,7 +297,6 @@ class YourProductState extends State<YourProduct> {
                   },
                 ),
                 label: 'Home',
-                
               ),
               BottomNavigationBarItem(
                   icon: ElevatedButton(
@@ -274,6 +322,26 @@ class YourProductState extends State<YourProduct> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget customButton(
+      {required String title,
+      required IconData icon,
+      required VoidCallback onClick}) {
+    return Container(
+      width: 280,
+      child: ElevatedButton(
+          onPressed: onClick,
+          child: Row(
+            children: [
+              Icon(icon),
+              const SizedBox(
+                width: 20,
+              ),
+              Text(title),
+            ],
+          )),
     );
   }
 }
