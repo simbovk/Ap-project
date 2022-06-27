@@ -7,9 +7,14 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,6 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class SignUp extends StatelessWidget {
+  String _log = '';
   final TextEditingController _controllerFirstName =
       TextEditingController(text: "");
   final TextEditingController _controllerLastName =
@@ -153,7 +159,8 @@ class SignUp extends StatelessWidget {
                       ),
                     );
                   },
-                )
+                ),
+                Text(_log),
               ],
             ),
           ),
@@ -164,11 +171,16 @@ class SignUp extends StatelessWidget {
 
   sendInfoToServer(String firstName, String lastName, String password,
       String phoneNumber, String email) async {
-    String request = "Signup\n$firstName/$lastName/$password/$phoneNumber/$email\u0000";
+    String request =
+        "Signup\n$firstName/$lastName/$password/$phoneNumber/$email\u0000";
 
     await Socket.connect("10.0.2.2", 8000).then((ServerSocket) {
       ServerSocket.write(request);
       ServerSocket.flush();
+      ServerSocket.listen((response) {
+        //print(String.fromCharCodes(response) + '\n');
+        _log += String.fromCharCodes(response) + '\n';
+      });
     });
   }
 }
