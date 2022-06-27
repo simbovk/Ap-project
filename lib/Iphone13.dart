@@ -1,6 +1,4 @@
-// ignore_for_file: unnecessary_new
 
-import 'dart:html';
 import 'dart:ui';
 
 import 'package:digikala/Product.dart';

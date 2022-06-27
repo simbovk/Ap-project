@@ -1,3 +1,5 @@
+import 'dart:html';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:digikala/homePage.dart';
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SignUp(),
     );
@@ -19,7 +21,17 @@ class MyApp extends StatelessWidget {
 }
 
 class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+  final TextEditingController _controllerFirstName =
+      TextEditingController(text: "");
+  final TextEditingController _controllerLastName =
+      TextEditingController(text: "");
+  final TextEditingController _controllerPhoneNumber =
+      TextEditingController(text: "");
+  final TextEditingController _controllerEmail =
+      TextEditingController(text: "");
+  final TextEditingController _controllerPassword =
+      TextEditingController(text: "");
+  SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +55,7 @@ class SignUp extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(20),
                   child: TextField(
                     decoration: InputDecoration(
@@ -52,9 +64,10 @@ class SignUp extends StatelessWidget {
                                 BorderRadius.all(Radius.circular(32.0))),
                         hintText: 'Firstname',
                         iconColor: Colors.black),
+                    controller: _controllerFirstName,
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(20),
                   child: TextField(
                     decoration: InputDecoration(
@@ -63,40 +76,44 @@ class SignUp extends StatelessWidget {
                                 BorderRadius.all(Radius.circular(32.0))),
                         hintText: 'Lastname',
                         iconColor: Colors.black),
+                    controller: _controllerLastName,
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(20),
                   child: TextField(
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(32.0))),
                         hintText: 'Password',
                         iconColor: Colors.black),
+                    controller: _controllerPassword,
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(20),
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(32.0))),
                         hintText: 'Phonenumber',
                         iconColor: Colors.black),
+                    controller: _controllerPhoneNumber,
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(20),
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(32.0))),
                         hintText: 'email',
                         iconColor: Colors.black),
+                    controller: _controllerEmail,
                   ),
                 ),
                 SizedBox(
@@ -110,6 +127,12 @@ class SignUp extends StatelessWidget {
                           builder: (context) => const HomePage(),
                         ),
                       );
+                      sendInfoToServer(
+                          _controllerFirstName.text,
+                          _controllerLastName.text,
+                          _controllerPassword.text,
+                          _controllerPhoneNumber.text,
+                          _controllerEmail.text);
                     },
                     child: const Text('Sign in'),
                     style: ButtonStyle(
@@ -138,5 +161,15 @@ class SignUp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  sendInfoToServer(String firstName, String lastName, String password,
+      String phoneNumber, String email) async {
+    String request = "$firstName/$lastName/$password/$phoneNumber/$email";
+
+    await Socket.connect("10.0.2.2", 8000).then((ServerSocket) {
+      ServerSocket.write(request);
+      ServerSocket.flush();
+    });
   }
 }
