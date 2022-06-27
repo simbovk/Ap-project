@@ -7,15 +7,9 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
+   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -24,144 +18,160 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
+
+  SignUp({Key? key}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
   String _log = '';
+
   final TextEditingController _controllerFirstName =
       TextEditingController(text: "");
+
   final TextEditingController _controllerLastName =
       TextEditingController(text: "");
+
   final TextEditingController _controllerPhoneNumber =
       TextEditingController(text: "");
+
   final TextEditingController _controllerEmail =
       TextEditingController(text: "");
+
   final TextEditingController _controllerPassword =
       TextEditingController(text: "");
-  SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/homepage.png"),
-                  fit: BoxFit.cover)),
-          padding: const EdgeInsets.only(right: 30, left: 30),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Create Account',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32.0))),
-                        hintText: 'Firstname',
-                        iconColor: Colors.black),
-                    controller: _controllerFirstName,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/homepage.png"),
+                    fit: BoxFit.cover)),
+            padding: const EdgeInsets.only(right: 30, left: 30),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Create Account',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32.0))),
-                        hintText: 'Lastname',
-                        iconColor: Colors.black),
-                    controller: _controllerLastName,
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32.0))),
-                        hintText: 'Password',
-                        iconColor: Colors.black),
-                    controller: _controllerPassword,
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'Firstname',
+                          iconColor: Colors.black),
+                      controller: _controllerFirstName,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32.0))),
-                        hintText: 'Phonenumber',
-                        iconColor: Colors.black),
-                    controller: _controllerPhoneNumber,
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'Lastname',
+                          iconColor: Colors.black),
+                      controller: _controllerLastName,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32.0))),
-                        hintText: 'email',
-                        iconColor: Colors.black),
-                    controller: _controllerEmail,
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: TextField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'Password',
+                          iconColor: Colors.black),
+                      controller: _controllerPassword,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 30,
-                  width: 100,
-                  child: ElevatedButton(
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'Phonenumber',
+                          iconColor: Colors.black),
+                      controller: _controllerPhoneNumber,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'email',
+                          iconColor: Colors.black),
+                      controller: _controllerEmail,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                    width: 100,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                        sendInfoToServer(
+                            _controllerFirstName.text,
+                            _controllerLastName.text,
+                            _controllerPassword.text,
+                            _controllerPhoneNumber.text,
+                            _controllerEmail.text);
+                      },
+                      child: const Text('Sign in'),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.black),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: const BorderSide(color: Colors.black))),
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    child: const Text('already have an account?'),
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const HomePage(),
+                          builder: (context) => const Vorod(),
                         ),
                       );
-                      sendInfoToServer(
-                          _controllerFirstName.text,
-                          _controllerLastName.text,
-                          _controllerPassword.text,
-                          _controllerPhoneNumber.text,
-                          _controllerEmail.text);
                     },
-                    child: const Text('Sign in'),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: const BorderSide(color: Colors.black))),
-                    ),
                   ),
-                ),
-                TextButton(
-                  child: const Text('already have an account?'),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Vorod(),
-                      ),
-                    );
-                  },
-                ),
-                Text(_log),
-              ],
+                  Text(_log),
+                ],
+              ),
             ),
           ),
         ),
@@ -179,7 +189,9 @@ class SignUp extends StatelessWidget {
       ServerSocket.flush();
       ServerSocket.listen((response) {
         //print(String.fromCharCodes(response) + '\n');
-        _log += String.fromCharCodes(response) + '\n';
+        setState(() {
+          _log += String.fromCharCodes(response) + '\n';
+        });
       });
     });
   }
