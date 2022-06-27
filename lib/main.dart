@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:io';
 import 'dart:ui';
 
@@ -165,7 +164,7 @@ class SignUp extends StatelessWidget {
 
   sendInfoToServer(String firstName, String lastName, String password,
       String phoneNumber, String email) async {
-    String request = "$firstName/$lastName/$password/$phoneNumber/$email";
+    String request = "Signup\n$firstName/$lastName/$password/$phoneNumber/$email\u0000";
 
     await Socket.connect("10.0.2.2", 8000).then((ServerSocket) {
       ServerSocket.write(request);
