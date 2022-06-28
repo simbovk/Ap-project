@@ -15,6 +15,8 @@ class Vorod extends StatelessWidget {
         body: SingleChildScrollView(
           child: Center(
             child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.only(right: 30, left: 30),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
@@ -23,7 +25,8 @@ class Vorod extends StatelessWidget {
                   children: [
                     const Text(
                       'LOGIN',
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 50),
                     const TextField(
@@ -62,7 +65,8 @@ class Vorod extends StatelessWidget {
                               backgroundColor:
                                   MaterialStateProperty.all(Colors.black),
                               shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(RoundedRectangleBorder(
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18.0),
                               ))),
                         ))

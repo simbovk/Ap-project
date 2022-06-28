@@ -27,7 +27,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String _log = '';
-
+  bool? goNextPage;
   final TextEditingController _controllerFirstName =
       TextEditingController(text: "");
 
@@ -45,7 +45,6 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    bool? goNextPage;
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -135,6 +134,12 @@ class _SignUpState extends State<SignUp> {
                     width: 100,
                     child: ElevatedButton(
                       onPressed: () {
+                        sendInfoToServer(
+                            _controllerFirstName.text,
+                            _controllerLastName.text,
+                            _controllerPassword.text,
+                            _controllerPhoneNumber.text,
+                            _controllerEmail.text);
                         if (goNextPage == true) {
                           Navigator.push(
                             context,
@@ -142,13 +147,6 @@ class _SignUpState extends State<SignUp> {
                               builder: (context) => const HomePage(),
                             ),
                           );
-                        } else {
-                          sendInfoToServer(
-                              _controllerFirstName.text,
-                              _controllerLastName.text,
-                              _controllerPassword.text,
-                              _controllerPhoneNumber.text,
-                              _controllerEmail.text);
                         }
                       },
                       child: const Text('Sign in'),
@@ -175,7 +173,10 @@ class _SignUpState extends State<SignUp> {
                       );
                     },
                   ),
-                  Text(_log , style: TextStyle(color: Colors.red , fontSize: 20),),
+                  Text(
+                    _log,
+                    style: TextStyle(color: Colors.blue, fontSize: 20),
+                  ),
                 ],
               ),
             ),
@@ -194,9 +195,10 @@ class _SignUpState extends State<SignUp> {
       ServerSocket.write(request);
       ServerSocket.flush();
       ServerSocket.listen((response) {
-        //print(String.fromCharCodes(response) + '\n');
+        print(String.fromCharCodes(response));
         setState(() {
-          _log += (checkedResponse(String.fromCharCodes(response)) + '\n');
+          _log += (checkedResponse(String.fromCharCodes(response)));
+          print('this is $_log');
         });
       });
     });
@@ -204,9 +206,11 @@ class _SignUpState extends State<SignUp> {
 
   String checkedResponse(String data) {
     switch (data) {
-      case '0':
+      case '[0]':
+        goNextPage = false;
         return 'Please fill in all of the fields';
-      case '1':
+      case '[1]':
+        goNextPage = true;
         return 'Saved successfuly';
     }
     return '';
