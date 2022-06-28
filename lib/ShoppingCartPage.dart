@@ -42,7 +42,7 @@ class ShoppingCartState extends State<ShoppingCart> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 0),
                       child: Container(
                         decoration: const BoxDecoration(
                           image: DecorationImage(
@@ -149,15 +149,15 @@ class ShoppingCartState extends State<ShoppingCart> {
                     const Padding(
                       padding: EdgeInsets.only(left: 30),
                       child: Text(
-                        'Blue',
+                        'Blue', style: TextStyle(fontSize: 20),
                       ),
                     ),
                     const SizedBox(
                       width: 3,
                     ),
                     Container(
-                      height: 30,
-                      width: 30,
+                      height: 20,
+                      width:  20,
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(32.0)),
                           color: Colors.blue),
@@ -168,6 +168,7 @@ class ShoppingCartState extends State<ShoppingCart> {
                     const Text(
                       r'Price: $999.00',
                       style: TextStyle(
+                        fontSize: 20,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold),
                       textAlign: TextAlign.left,

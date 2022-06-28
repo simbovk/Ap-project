@@ -36,10 +36,10 @@ class Iphone13 extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 150, left: 150),
+                padding: const EdgeInsets.only(right: 100, left: 100),
                 child: SizedBox(
-                  height: 300,
-                  width: 300,
+                  height: 250,
+                  width: 400,
                   child: Expanded(
                     child: PageView(
                         controller: controller,
@@ -140,10 +140,10 @@ class Iphone13 extends StatelessWidget {
                     activeDotColor: Colors.black, dotHeight: 16, dotWidth: 16),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 350),
+                padding: const EdgeInsets.only(right: 250),
                 child: Text(
                   'Mobile / iphone13',
                   style: TextStyle(
@@ -152,10 +152,10 @@ class Iphone13 extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               const Padding(
-                padding: EdgeInsets.only(right: 100),
+                padding: EdgeInsets.only(right: 10),
                 child: Text(
                   '\u2022 Apple iPhone 13 (256GB)\n 15 cm (6.1-inch) Super Retina XDR display\n\u2022 Advanced dual-camera system with 12MP Wide and Ultra\n Wide cameras; Photographic Styles, Smart HDR 4, Night\n mode, 4K Dolby Vision HDR recording',
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -163,10 +163,10 @@ class Iphone13 extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 440),
+                padding: const EdgeInsets.only(right: 350),
                 child: Text(
                   'Color',
                   style: TextStyle(
@@ -178,10 +178,10 @@ class Iphone13 extends StatelessWidget {
                 height: 5,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 370),
+                padding: const EdgeInsets.only(right: 300),
                 child: Container(
-                  height: 30,
-                  width: 100,
+                  height: 25,
+                  width: 75,
                   child: DecoratedBox(
                       decoration: BoxDecoration(
                           gradient: const LinearGradient(colors: [
@@ -250,10 +250,10 @@ class Iphone13 extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 440),
+                padding: const EdgeInsets.only(right: 350),
                 child: Text(
                   'Price',
                   style: TextStyle(
@@ -265,7 +265,7 @@ class Iphone13 extends StatelessWidget {
                 height: 5,
               ),
               const Padding(
-                padding: EdgeInsets.only(right: 400),
+                padding: EdgeInsets.only(right: 340),
                 child: Text(
                   r'$999.00',
                   style: TextStyle(
@@ -273,10 +273,10 @@ class Iphone13 extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 440),
+                padding: const EdgeInsets.only(right: 350),
                 child: Text(
                   'Rate',
                   style: TextStyle(
@@ -284,8 +284,11 @@ class Iphone13 extends StatelessWidget {
                   textAlign: TextAlign.left,
                 ),
               ),
+              SizedBox(
+                height: 5,
+              ),
               const Padding(
-                padding: EdgeInsets.only(right: 420),
+                padding: EdgeInsets.only(right: 350),
                 child: Text("⭐️4.9",
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ),

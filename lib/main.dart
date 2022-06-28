@@ -9,7 +9,7 @@ void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-   @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
 }
 
 class SignUp extends StatefulWidget {
-
   SignUp({Key? key}) : super(key: key);
 
   @override
@@ -46,6 +45,7 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    bool? goNextPage;
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -135,26 +135,32 @@ class _SignUpState extends State<SignUp> {
                     width: 100,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
-                        sendInfoToServer(
-                            _controllerFirstName.text,
-                            _controllerLastName.text,
-                            _controllerPassword.text,
-                            _controllerPhoneNumber.text,
-                            _controllerEmail.text);
+                        if (goNextPage == true) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        } else {
+                          sendInfoToServer(
+                              _controllerFirstName.text,
+                              _controllerLastName.text,
+                              _controllerPassword.text,
+                              _controllerPhoneNumber.text,
+                              _controllerEmail.text);
+                        }
                       },
                       child: const Text('Sign in'),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.black),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: const BorderSide(color: Colors.black))),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side:
+                                        const BorderSide(color: Colors.black))),
                       ),
                     ),
                   ),
@@ -169,7 +175,7 @@ class _SignUpState extends State<SignUp> {
                       );
                     },
                   ),
-                  Text(_log),
+                  Text(_log , style: TextStyle(color: Colors.red , fontSize: 20),),
                 ],
               ),
             ),
@@ -190,9 +196,19 @@ class _SignUpState extends State<SignUp> {
       ServerSocket.listen((response) {
         //print(String.fromCharCodes(response) + '\n');
         setState(() {
-          _log += String.fromCharCodes(response) + '\n';
+          _log += (checkedResponse(String.fromCharCodes(response)) + '\n');
         });
       });
     });
+  }
+
+  String checkedResponse(String data) {
+    switch (data) {
+      case '0':
+        return 'Please fill in all of the fields';
+      case '1':
+        return 'Saved successfuly';
+    }
+    return '';
   }
 }

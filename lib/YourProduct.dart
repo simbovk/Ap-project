@@ -246,7 +246,7 @@ class YourProductState extends State<YourProduct> {
                   const Align(
                       alignment: Alignment.topLeft,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 10),
+                        padding: EdgeInsets.only(left: 0),
                         child: Text('Product Image',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 20)),
@@ -263,15 +263,15 @@ class YourProductState extends State<YourProduct> {
                               fit: BoxFit.fill),
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           color: Colors.black),
-                      height: 200,
-                      width: 200,
+                      height: 120,
+                      width: 500,
                     ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 250),
+                    padding: const EdgeInsets.only(right: 150),
                     child: customButton(
                         title: 'Pick from Gallery',
                         icon: Icons.image_outlined,
@@ -281,7 +281,7 @@ class YourProductState extends State<YourProduct> {
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 250),
+                    padding: const EdgeInsets.only(right: 150),
                     child: customButton(
                         title: 'Pick from Camera',
                         icon: Icons.camera_alt_rounded,
