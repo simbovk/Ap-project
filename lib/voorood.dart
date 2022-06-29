@@ -1,11 +1,26 @@
+import 'dart:io';
 import 'dart:ui';
 
+import 'package:digikala/Global.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'homePage.dart';
 
-class Vorod extends StatelessWidget {
+class Vorod extends StatefulWidget {
   const Vorod({Key? key}) : super(key: key);
+
+  @override
+  State<Vorod> createState() => _VorodState();
+}
+
+class _VorodState extends State<Vorod> {
+  String? errorMessage;
+  String _log = '';
+  final TextEditingController _controllerPhoneNumber =
+      TextEditingController(text: "");
+  final TextEditingController _controllerPassword =
+      TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +44,26 @@ class Vorod extends StatelessWidget {
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 50),
-                    const TextField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(32.0))),
-                            hintText: 'Phonenumber',
-                            iconColor: Color.fromARGB(255, 78, 255, 223))),
+                    TextField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'Phonenumber',
+                          iconColor: Color.fromARGB(255, 78, 255, 223)),
+                      controller: _controllerPhoneNumber,
+                    ),
                     const SizedBox(height: 40),
-                    const TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(32.0))),
-                            hintText: 'Password',
-                            iconColor: Color.fromARGB(255, 78, 175, 255))),
+                    TextField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'Password',
+                          iconColor: Color.fromARGB(255, 78, 175, 255)),
+                      controller: _controllerPassword,
+                    ),
                     const SizedBox(
                       height: 50,
                     ),
@@ -53,11 +72,9 @@ class Vorod extends StatelessWidget {
                         width: 100,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(),
-                              ),
+                            sendInfoToServer(
+                              _controllerPhoneNumber.text,
+                              _controllerPassword.text,
                             );
                           },
                           child: const Text('Login'),
@@ -69,13 +86,26 @@ class Vorod extends StatelessWidget {
                                   RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18.0),
                               ))),
-                        ))
+                        )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                      child: Text(
+                        _log,
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ],
                 ),
               ),
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/homepage.PNG"),
+                    image: AssetImage("assets/images/homepage.png"),
                     fit: BoxFit.cover),
               ),
             ),
@@ -83,5 +113,53 @@ class Vorod extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  sendInfoToServer(String phoneNumber, String password) async {
+    String request = "Login\n$phoneNumber/$password\u0000";
+
+    await Socket.connect("10.0.2.2", 8000).then((ServerSocket) {
+      ServerSocket.write(request);
+      ServerSocket.flush();
+      ServerSocket.listen((response) {
+        setState(() {
+          _log +=
+              (checkedResponse(String.fromCharCodes(response), phoneNumber));
+        });
+      });
+    });
+  }
+
+  String checkedResponse(String data, String phoneNumber) {
+    switch (data) {
+      case '0':
+        return 'Please fill in all of the fields\n';
+      case '1':
+        sendPhoneNumberToServer(phoneNumber);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ),
+        );
+        break;
+      case '2':
+        return 'user not found\n';
+    }
+    return '';
+  }
+
+  sendPhoneNumberToServer(String phoneNumber) async {
+    String request = "profile\n$phoneNumber\u0000";
+
+    await Socket.connect("10.0.2.2", 8000).then((ServerSocket) {
+      ServerSocket.write(request);
+      ServerSocket.flush();
+      ServerSocket.listen((response) {
+        mainUserName = String.fromCharCodes(response).split("/")[0];
+        mainPhoneNumber = String.fromCharCodes(response).split("/")[1];
+        mainEmail = String.fromCharCodes(response).split("/")[2];
+      });
+    });
   }
 }

@@ -5,7 +5,15 @@ import 'package:digikala/YourProduct.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  String? userName = '';
+  String? email = '';
+  String? phoneNumber = '';
+
+  HomePage([String? userName, String? phoneNumber, String? email]) {
+    this.userName = userName;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -630,7 +638,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomePage(),
+                        builder: (context) => HomePage(),
                       ),
                     );
                   },
@@ -639,40 +647,43 @@ class HomePage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                   icon: IconButton(
-                  icon: const Icon(Icons.category_outlined),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const YourProduct(),
-                      ),
-                    );
-                  },
-                ), label: 'My Product'),
-               BottomNavigationBarItem(
+                    icon: const Icon(Icons.category_outlined),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const YourProduct(),
+                        ),
+                      );
+                    },
+                  ),
+                  label: 'My Product'),
+              BottomNavigationBarItem(
                   icon: IconButton(
-                  icon:  const Icon(Icons.shopping_cart),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ShoppingCart(),
-                      ),
-                    );
-                  },),
+                    icon: const Icon(Icons.shopping_cart),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ShoppingCart(),
+                        ),
+                      );
+                    },
+                  ),
                   label: 'Shopping Cart'),
               BottomNavigationBarItem(
                   icon: IconButton(
-                  icon: const Icon(Icons.account_circle),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProfilePage(),
-                      ),
-                    );
-                  },
-                ), label: 'Account'),
+                    icon: const Icon(Icons.account_circle),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  label: 'Account'),
             ],
             //selectedItemColor: Colors.white,
           ),

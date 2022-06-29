@@ -1,11 +1,19 @@
 import 'dart:ui';
 
+import 'package:digikala/Global.dart';
 import 'package:flutter/material.dart';
 
 import 'homePage.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +30,19 @@ class ProfilePage extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.home),
                 onPressed: () {
-                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(),
-                      ),
-                    );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
                 },
               )
             ],
           ),
           body: SingleChildScrollView(
             child: Container(
-              height: MediaQuery.of(context).size.height + 150,
+              height: MediaQuery.of(context).size.height + 250,
               width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -61,33 +69,25 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 5),
-                    const Center(
+                     Center(
                       child: Text(
-                        'username',
+                        mainUserName,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
                     const SizedBox(height: 5),
-                    const Center(
+                     Center(
                       child: Text(
-                        'Phonenumber',
+                        mainPhoneNumber,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
                     const SizedBox(height: 5),
-                    const Center(
+                   Center(
                       child: Text(
-                        'Email',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    const Center(
-                      child: Text(
-                        'Username',
+                        mainEmail,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
@@ -96,7 +96,7 @@ class ProfilePage extends StatelessWidget {
                       height: 30,
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(right: 350),
+                      padding: EdgeInsets.only(right: 260),
                       child: Text(
                         'Confirmed Orders',
                         style: TextStyle(
@@ -234,7 +234,7 @@ class ProfilePage extends StatelessWidget {
                       height: 30,
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(right: 390),
+                      padding: EdgeInsets.only(right: 300),
                       child: Text(
                         'My Product',
                         style: TextStyle(
@@ -372,7 +372,7 @@ class ProfilePage extends StatelessWidget {
                       height: 30,
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(right: 360),
+                      padding: EdgeInsets.only(right: 265),
                       child: Text(
                         'Favorite Product',
                         style: TextStyle(

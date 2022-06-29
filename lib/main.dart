@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:ui';
-
+import 'package:digikala/Global.dart';
 import 'package:digikala/homePage.dart';
 import 'package:digikala/voorood.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SignUp(),
     );
@@ -19,13 +19,14 @@ class MyApp extends StatelessWidget {
 }
 
 class SignUp extends StatefulWidget {
-  SignUp({Key? key}) : super(key: key);
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
+  String? errorMessage;
   String _log = '';
   bool? goNextPage;
   final TextEditingController _controllerFirstName =
@@ -69,9 +70,9 @@ class _SignUpState extends State<SignUp> {
                     height: 20,
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
@@ -81,9 +82,9 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20),
-                    child: TextField(
-                      decoration: InputDecoration(
+                    padding: const EdgeInsets.all(20),
+                    child: TextFormField(
+                      decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
@@ -93,11 +94,19 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            errorMessage = checkPass();
+                          },
+                        );
+                      },
                       obscureText: true,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(
+                      decoration: InputDecoration(
+                          errorText: errorMessage,
+                          border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
                           hintText: 'Password',
@@ -106,7 +115,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(
@@ -118,7 +127,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: TextField(
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(
@@ -140,14 +149,6 @@ class _SignUpState extends State<SignUp> {
                             _controllerPassword.text,
                             _controllerPhoneNumber.text,
                             _controllerEmail.text);
-                        if (goNextPage == true) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomePage(),
-                            ),
-                          );
-                        }
                       },
                       child: const Text('Sign in'),
                       style: ButtonStyle(
@@ -173,9 +174,14 @@ class _SignUpState extends State<SignUp> {
                       );
                     },
                   ),
-                  Text(
-                    _log,
-                    style: TextStyle(color: Colors.blue, fontSize: 20),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                    child: Text(
+                      _log,
+                      style: const TextStyle(color: Colors.red, fontSize: 20),
+                    ),
                   ),
                 ],
               ),
@@ -195,24 +201,40 @@ class _SignUpState extends State<SignUp> {
       ServerSocket.write(request);
       ServerSocket.flush();
       ServerSocket.listen((response) {
-        print(String.fromCharCodes(response));
         setState(() {
-          _log += (checkedResponse(String.fromCharCodes(response)));
-          print('this is $_log');
+          _log += (checkedResponse(String.fromCharCodes(response), firstName,
+              lastName, phoneNumber, email));
         });
       });
     });
   }
 
-  String checkedResponse(String data) {
+  String checkedResponse(String data, String firstName, String lastName,
+      String phoneNumber, String email) {
     switch (data) {
-      case '[0]':
-        goNextPage = false;
-        return 'Please fill in all of the fields';
-      case '[1]':
-        goNextPage = true;
-        return 'Saved successfuly';
+      case '0':
+        return 'Please fill in all of the fields\n';
+      case '1':
+        String userName = firstName + ' ' + lastName;
+        mainPhoneNumber = phoneNumber;
+        mainEmail = email;
+        mainUserName = userName;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ),
+        );
+        break;
     }
     return '';
+  }
+
+  checkPass() {
+    if (_controllerPassword.text.length < 8) {
+      return 'not valid password';
+    } else {
+      return null;
+    }
   }
 }
