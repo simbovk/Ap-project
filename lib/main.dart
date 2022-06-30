@@ -26,7 +26,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String? errorMessage;
+  String? passErrorMessage;
+   String? emailErrorMessage;
   String _log = '';
   bool? goNextPage;
   final TextEditingController _controllerFirstName =
@@ -99,13 +100,13 @@ class _SignUpState extends State<SignUp> {
                       onChanged: (value) {
                         setState(
                           () {
-                            errorMessage = checkPass();
+                            passErrorMessage = checkPass();
                           },
                         );
                       },
                       obscureText: true,
                       decoration: InputDecoration(
-                          errorText: errorMessage,
+                          errorText: passErrorMessage,
                           border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
@@ -129,7 +130,15 @@ class _SignUpState extends State<SignUp> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: TextField(
-                      decoration: const InputDecoration(
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            emailErrorMessage = checkEmail();
+                          },
+                        );
+                      },
+                      decoration: InputDecoration(
+                        errorText: emailErrorMessage,
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
@@ -232,9 +241,25 @@ class _SignUpState extends State<SignUp> {
 
   checkPass() {
     if (_controllerPassword.text.length < 8) {
-      return 'not valid password';
+      return 'not valid';
     } else {
       return null;
     }
+  }
+
+  checkPassSmallElement() {
+    for (int i = 0; i < _controllerPassword.text.split('').length; i++) {
+      if (!(_controllerPassword.text.split('')[i] == ['a', 'z'])) {
+        return false;
+      }
+      return true;
+    }
+  }
+
+  checkEmail() {
+    if (_controllerEmail.text.contains('@gmail.com'))
+      return null;
+    else
+      return 'not valid';
   }
 }

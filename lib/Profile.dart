@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:digikala/Global.dart';
+import 'package:digikala/editProfile.dart';
 import 'package:flutter/material.dart';
 
 import 'homePage.dart';
@@ -91,6 +92,19 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
+                    ),
+                    Center(
+                      child:  TextButton(
+                    child: const Text('edit profile'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>const EditProfile(),
+                        ),
+                      );
+                    },
+                  ),
                     ),
                     const SizedBox(
                       height: 30,
