@@ -22,6 +22,8 @@ class _VorodState extends State<Vorod> {
   final TextEditingController _controllerPassword =
       TextEditingController(text: "");
 
+  bool showPass = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,8 +57,13 @@ class _VorodState extends State<Vorod> {
                     ),
                     const SizedBox(height: 40),
                     TextField(
-                      obscureText: true,
-                      decoration: const InputDecoration(
+                      obscureText: showPass,
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                showPass = !showPass;
+                              },
+                              icon: Icon(Icons.remove_red_eye_outlined)),
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),

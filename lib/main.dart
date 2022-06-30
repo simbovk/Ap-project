@@ -26,7 +26,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  bool showPass = true;
+  bool showPass = false;
   String? passErrorMessage;
   String? emailErrorMessage;
   String _log = '';

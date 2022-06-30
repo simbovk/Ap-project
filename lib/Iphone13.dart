@@ -6,10 +6,27 @@ import 'package:digikala/ShoppingCartPage.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class Iphone13 extends StatelessWidget {
-  Product? product;
+class Iphone13 extends StatefulWidget {
 
   Iphone13({Key? key}) : super(key: key);
+
+  @override
+  State<Iphone13> createState() => _Iphone13State();
+}
+
+class _Iphone13State extends State<Iphone13> {
+  Product? product;
+  
+  String dropdownvalue2 = '1';
+String dropdownvalue = 'phantom black';
+  
+  var rate = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -252,6 +269,28 @@ class Iphone13 extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
+               Container(
+                    padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
+                    child: Text(
+                      "your rate",
+                      style: TextStyle(color: Colors.blue.withOpacity(0.6), fontSize: 16),
+                    )),
+                DropdownButton(
+                  value: dropdownvalue2,
+                  icon: const Icon(Icons.star_outline_rounded , size: 30,),
+                  items: rate.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownvalue2 = newValue!;
+                    });
+                  },
+                ),
+                SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(right: 350),
                 child: Text(
