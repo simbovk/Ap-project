@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:digikala/Global.dart';
+import 'package:digikala/Profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,6 +16,9 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   String? emailErrorMessage;
   String _log = '';
+final TextEditingController _controllerPassword =
+      TextEditingController(text: "");
+
   final TextEditingController _controllerFirstName =
       TextEditingController(text: "");
 
@@ -53,42 +57,60 @@ class _EditProfileState extends State<EditProfile> {
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
-                          hintText: 'firstname',
+                          hintText: 'new firstname',
                           iconColor: Color.fromARGB(255, 78, 255, 223)),
                       controller: _controllerFirstName,
                     ),
                     const SizedBox(height: 40),
                     TextField(
-                      obscureText: true,
+                      // obscureText: true,
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
-                          hintText: 'lastname',
+                          hintText: 'new lastname',
                           iconColor: Color.fromARGB(255, 78, 175, 255)),
                       controller: _controllerLastName,
                     ),
                     const SizedBox(height: 40),
                     TextField(
-                      obscureText: true,
+                      // obscureText: true,
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
-                          hintText: 'phonenumber',
+                          hintText: 'new phonenumber',
                           iconColor: Color.fromARGB(255, 78, 175, 255)),
                       controller: _controllerPhoneNumber,
                     ),
                     const SizedBox(height: 40),
+                    TextField(
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            emailErrorMessage = checkEmail();
+                          },
+                        );
+                      },
+                      decoration: InputDecoration(
+                          errorText: emailErrorMessage,
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'new email',
+                          iconColor: Color.fromARGB(255, 78, 175, 255)),
+                      controller: _controllerEmail,
+                    ),
+                     const SizedBox(height: 40),
                     TextField(
                       obscureText: true,
                       decoration: const InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
-                          hintText: 'email',
+                          hintText: 'Password',
                           iconColor: Color.fromARGB(255, 78, 175, 255)),
-                      controller: _controllerEmail,
+                      controller: _controllerPassword,
                     ),
                     const SizedBox(
                       height: 50,
@@ -102,7 +124,8 @@ class _EditProfileState extends State<EditProfile> {
                                 _controllerFirstName.text,
                                 _controllerLastName.text,
                                 _controllerPhoneNumber.text,
-                                _controllerEmail.text);
+                                _controllerEmail.text , 
+                                _controllerPassword.text);
                           },
                           child: const Text('Submit'),
                           style: ButtonStyle(
@@ -143,9 +166,9 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   sendInfoToServer(String firstName, String lastName, String phoneNumber,
-      String email) async {
+      String email , String password) async {
     String request =
-        "EditProfile\n$firstName/$lastName/$phoneNumber/$email\u0000";
+        "EditProfile\n$firstName/$lastName/$phoneNumber/$email/$password\u0000";
     await Socket.connect("10.0.2.2", 8000).then((ServerSocket) {
       ServerSocket.write(request);
       ServerSocket.flush();
@@ -168,7 +191,13 @@ class _EditProfileState extends State<EditProfile> {
         mainPhoneNumber = phoneNumber;
         mainEmail = email;
         mainUserName = userName;
-        return 'Changed Successfully';
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ProfilePage(),
+          ),
+        );
+        break;
       case '2':
         return 'User Not Found';
     }

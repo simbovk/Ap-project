@@ -26,8 +26,9 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool showPass = true;
   String? passErrorMessage;
-   String? emailErrorMessage;
+  String? emailErrorMessage;
   String _log = '';
   bool? goNextPage;
   final TextEditingController _controllerFirstName =
@@ -96,23 +97,47 @@ class _SignUpState extends State<SignUp> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
-                    child: TextField(
-                      onChanged: (value) {
-                        setState(
-                          () {
-                            passErrorMessage = checkPass();
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showPass = false;
+                            },
+                            child: Icon(Icons.remove_red_eye_outlined),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.black),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side: const BorderSide(
+                                          color: Colors.black))),
+                            ),
+                          ),
+                        ),
+                        TextField(
+                          onChanged: (value) {
+                            setState(
+                              () {
+                                passErrorMessage = checkPass();
+                              },
+                            );
                           },
-                        );
-                      },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          errorText: passErrorMessage,
-                          border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(32.0))),
-                          hintText: 'Password',
-                          iconColor: Colors.black),
-                      controller: _controllerPassword,
+                          obscureText: showPass,
+                          decoration: InputDecoration(
+                              errorText: passErrorMessage,
+                              border: const OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(32.0))),
+                              hintText: 'Password',
+                              iconColor: Colors.black),
+                          controller: _controllerPassword,
+                        ),
+                      ],
                     ),
                   ),
                   Padding(
@@ -138,7 +163,7 @@ class _SignUpState extends State<SignUp> {
                         );
                       },
                       decoration: InputDecoration(
-                        errorText: emailErrorMessage,
+                          errorText: emailErrorMessage,
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(32.0))),
