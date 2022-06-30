@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 
 import 'package:digikala/Product.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Iphone13 extends StatefulWidget {
-
   Iphone13({Key? key}) : super(key: key);
 
   @override
@@ -16,10 +14,18 @@ class Iphone13 extends StatefulWidget {
 
 class _Iphone13State extends State<Iphone13> {
   Product? product;
-  
+  String? color;
   String dropdownvalue2 = '1';
-String dropdownvalue = 'phantom black';
-  
+
+  var colors = [
+    'black',
+    'white',
+    'red',
+    'green',
+    'blue',
+    'pink',
+  ];
+
   var rate = [
     "1",
     "2",
@@ -195,89 +201,100 @@ String dropdownvalue = 'phantom black';
                 height: 5,
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 300),
+                padding: const EdgeInsets.only(right: 290),
                 child: Container(
                   height: 25,
-                  width: 75,
-                  child: DecoratedBox(
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(colors: [
-                            Colors.redAccent,
-                            Colors.blueAccent,
-                            Colors.purpleAccent
-                            //add more colors
-                          ]),
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: const <BoxShadow>[
-                            BoxShadow(
-                                color: Color.fromRGBO(
-                                    0, 0, 0, 0.57), //shadow for button
-                                blurRadius: 5) //blur radius of shadow
-                          ]),
-                      child: DropdownButton(
-                        items: [
-                          DropdownMenuItem(
-                            child: Container(
-                                color: Colors.black,
-                                child: const Text("black")),
-                            value: Colors.black,
-                          ),
-                          DropdownMenuItem(
-                            child: Container(
-                                color: Colors.white,
-                                child: const Text(
-                                  "white",
-                                  style: TextStyle(color: Colors.black),
-                                )),
-                            value: Colors.white,
-                          ),
-                          DropdownMenuItem(
-                            child: Container(
-                                color: Color.fromARGB(255, 4, 36, 52),
-                                child: const Text("blue")),
-                            value: const Color.fromARGB(255, 4, 36, 52),
-                          ),
-                          DropdownMenuItem(
-                            child: Container(
-                                color: const Color.fromARGB(255, 207, 37, 25),
-                                child: const Text("red")),
-                            value: const Color.fromARGB(255, 207, 37, 25),
-                          ),
-                          DropdownMenuItem(
-                            child: Container(
-                                color: const Color.fromARGB(255, 255, 122, 166),
-                                child: const Text("pink")),
-                            value: const Color.fromARGB(255, 255, 122, 166),
-                          ),
-                          DropdownMenuItem(
-                            child: Container(
-                                color: const Color.fromARGB(255, 1, 46, 18),
-                                child: const Text("green")),
-                            value: const Color.fromARGB(255, 1, 46, 18),
-                          ),
-                        ],
-                        onChanged: (value) {
-                          Product(productColor: value, name: 'iphone13');
-                        }, //make true to take width of parent widget
-                        underline: Container(), //empty line
-                        style:
-                            const TextStyle(fontSize: 18, color: Colors.white),
-                        iconEnabledColor: Colors.white, //Icon color
-                      )),
+                  width: 100,
+                  child: DropdownButton(
+                    hint: Text('Select' , style: TextStyle(color: Colors.black),),
+                    icon: Icon(Icons.arrow_drop_down , color: Color(0),),
+                    value: color,
+                    items: [
+                      DropdownMenuItem(
+                        child: Container(
+                          height:25,
+                          width: 75,
+                            color: Colors.black,
+                            child: Center(child: const Text("black"))),
+                        value: 'black',
+                      ),
+                      DropdownMenuItem(
+                        child: Container(
+                          height:25,
+                          width: 75,
+                            color: Colors.white,
+                            child: Center(
+                              child: const Text(
+                                "white",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            )),
+                        value: 'white',
+                      ),
+                      DropdownMenuItem(
+                        child: Container(
+                          height:25,
+                          width: 75,
+                            color: Color.fromARGB(255, 4, 36, 52),
+                            child: Center(child: const Text("blue"))),
+                        value: 'blue',
+                      ),
+                      DropdownMenuItem(
+                        child: Container(
+                          height:25,
+                          width: 75,
+                            color: const Color.fromARGB(255, 207, 37, 25),
+                            child: Center(child: const Text("red"))),
+                        value: 'red',
+                      ),
+                      DropdownMenuItem(
+                        child: Container(
+                          height:25,
+                          width: 75,
+                            color: const Color.fromARGB(255, 255, 122, 166),
+                            child: Center(child: const Text("pink"))),
+                        value: 'pink',
+                      ),
+                      DropdownMenuItem(
+                        child: Container(
+                          height:25,
+                          width: 75,
+                            color: const Color.fromARGB(255, 1, 46, 18),
+                            child: Center(child: const Text("green"))),
+                        value: 'green',
+                      ),
+                    ],
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        color = newValue;
+                      });
+                    }, //make true to take width of parent widget
+                    underline: Container(), //empty line
+                    style:
+                        const TextStyle(fontSize: 18, color: Colors.white),
+                    iconEnabledColor: Colors.white, //Icon color
+                  ),
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
-               Container(
-                    padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
-                    child: Text(
-                      "your rate",
-                      style: TextStyle(color: Colors.blue.withOpacity(0.6), fontSize: 16),
-                    )),
-                DropdownButton(
+              Padding(
+                padding: const EdgeInsets.only(right: 325),
+                child: Text(
+                  "your rate",
+                  style: TextStyle(
+                      color: Colors.blue.withOpacity(0.6), fontSize: 16),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 340),
+                child: DropdownButton(
                   value: dropdownvalue2,
-                  icon: const Icon(Icons.star_outline_rounded , size: 30,),
+                  icon: const Icon(
+                    Icons.star_outline_rounded,
+                    size: 20,
+                  ),
                   items: rate.map((String items) {
                     return DropdownMenuItem(
                       value: items,
@@ -290,7 +307,8 @@ String dropdownvalue = 'phantom black';
                     });
                   },
                 ),
-                SizedBox(height: 20),
+              ),
+              SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.only(right: 350),
                 child: Text(
@@ -327,8 +345,8 @@ String dropdownvalue = 'phantom black';
                 height: 5,
               ),
               const Padding(
-                padding: EdgeInsets.only(right: 350),
-                child: Text("⭐️4.9",
+                padding: EdgeInsets.only(right: 340),
+                child: Text("4.9⭐️",
                     style: TextStyle(fontWeight: FontWeight.bold)),
               ),
             ],
