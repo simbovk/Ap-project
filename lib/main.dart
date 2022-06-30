@@ -97,47 +97,28 @@ class _SignUpState extends State<SignUp> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          height: 30,
-                          width: 30,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              showPass = false;
-                            },
-                            child: Icon(Icons.remove_red_eye_outlined),
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.black),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.0),
-                                      side: const BorderSide(
-                                          color: Colors.black))),
-                            ),
-                          ),
-                        ),
-                        TextField(
-                          onChanged: (value) {
-                            setState(
-                              () {
-                                passErrorMessage = checkPass();
-                              },
-                            );
+                    child: TextField(
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            passErrorMessage = checkPass();
                           },
-                          obscureText: showPass,
-                          decoration: InputDecoration(
-                              errorText: passErrorMessage,
-                              border: const OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(32.0))),
-                              hintText: 'Password',
-                              iconColor: Colors.black),
-                          controller: _controllerPassword,
-                        ),
-                      ],
+                        );
+                      },
+                      obscureText: showPass,
+                      decoration: InputDecoration(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                showPass = !showPass;
+                              },
+                              icon: Icon(Icons.remove_red_eye_outlined)),
+                          errorText: passErrorMessage,
+                          border: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32.0))),
+                          hintText: 'Password',
+                          iconColor: Colors.black),
+                      controller: _controllerPassword,
                     ),
                   ),
                   Padding(
