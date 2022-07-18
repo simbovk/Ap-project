@@ -1,6 +1,6 @@
 # digikala
 
-Ap proect (online shop).
+Ap project (online shop).
 
 ## Getting Started
 
