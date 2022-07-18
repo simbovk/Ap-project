@@ -1,6 +1,6 @@
 # digikala
 
-A new Flutter project.
+Ap proect (online shop).
 
 ## Getting Started
 
